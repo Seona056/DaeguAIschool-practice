@@ -1,0 +1,8231 @@
+ /*Default */
+
+* {
+	margin: 0;
+	padding: 0;
+
+	box-sizing: border-box;
+}
+
+ol, ul, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+}
+
+img{
+	vertical-align: middle;
+}
+
+button {
+	border: none;
+}
+
+input, textarea {
+	outline: none;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.container {
+	width: 1130px;
+	margin: 0 auto;     /* 항상 중앙에 배치 */
+}
+
+
+/* 상단 검색창 */
+
+#main-header {
+	position: relative;
+	background-color: #ffffff;
+}
+
+#main-header .search_area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 160px;
+	background-color: #ffffff;
+
+	border-bottom: 1px solid #e4e8eb;
+}
+
+#main-header .search_wrap {
+	display: flex;        /* inline-block요소였던 input과 button태그를 flex로 변경 */
+	flex-wrap: wrap;      /* flex안에서 줄바꿈 */ 
+	justify-content: space-between;    /* 오브젝트들 끼리 일정한 간격 */
+	align-items: center;    /* flex안에서 y축으로 중앙정렬 */
+	/* 개발일지 6일차 참고 */
+
+
+	position: relative;
+	width: 582px;
+	height: 52px;
+	border: solid 2px #19ce60;
+	/* border를 제외한 영역은 578x48 px이다. */
+
+}
+
+#main-header .search_wrap input {
+	width : calc(100% - 48px);      /* 가로영역 100%(578px)에서 48px만큼 뺀 영역을 표시 */
+	height: 100%;
+	/*background-color: yellow;*/
+	padding: 13px 15px;  /* 상하, 좌우 */
+
+	font-size: 22px;
+	border: none;    /* button태그의 border: none;처럼 초기화 작업으로 진행해도 된다. */
+}
+
+
+#main-header .seach_wrap input:focus {  /* input박스 안에 마우스를 클릭했을 때, 포커싱되는 것을 설정하는 가상 선택자 */
+	outline: none;    /* input박스를 클릭했을 때, 테두리 라인이 생기지 않는다. */
+}
+/* css 디폴트 설정값에서 input과 textarea에서 outline을 none으로 설정해 둔다. */
+
+
+#main-header .search_wrap button {
+	position: absolute;
+	right: -1px;
+	
+	width: 50px;
+	height: 50px;    /* 정사각형이 되도록 width와 height값을 조절 */
+	background-color: #19ce60;
+	/* 이대로만 작성하면 버튼에 검은색 테두리가 생긴다. button태그에는 기본적으로 border가 적용되기 때문 */
+	/* 위의 css 디폴트 설정값에서 border: none;을 추가해 준다. */
+}
+
+
+
+
+/* 상단 네비게이션 바 */
+
+
+#main-header #navbar {
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+#main-header #navbar ul {
+	padding: 11px 0;
+}
+
+#main-header #navbar ul li {
+	display: inline-block;    /* 하나의 x축으로 정렬하기 위해서 속성변경 */
+	margin-right: 5px;    /* inline-block은 기본 마진값이 있기 때문에, margin-right를 적용해도 딱 5px이 적용되지 않는다. 정확한 값을 넣고 싶다면, 검색창을 만들때 처럼 flex를 사용하면 된다. */
+}
+
+#main-header #navbar ul li a {
+	color: #03c75a;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+
+
+/* 네이버 왼쪽 */
+
+main {
+	overflow: hidden;
+	/* 자식의 높이값이 부모에게 영향을 줄 수 있도록 설정 */
+	/* 자식 : main-left, main-right */
+	/* 부모 : main */
+	padding: 0px;
+}
+
+main #main-left {
+	float: left;
+	width: 750px;
+	/*height: 2000px;*/     /* main-left 작업을 완료하고 나서 주석처리 */
+	/*background-color: yellow;*/    /* main-left 작업을 완료하고 나서 주석처리 */
+}
+
+main #main-right {
+	float: right;
+	width: 350px;
+	height: 2000px;
+	background-color: pink;
+}
+/* css디폴트 설정에서 container(main의 class명) width: 1130px; 으로 설정 해 두었다. */
+
+
+main #banner-wrap {
+	width: 750px;
+	height: 135px;
+	background-color: #000000;
+
+	margin-bottom: 12px;
+}
+
+main #news-wrap .news-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 22px 0 16px 0;
+}
+
+main #news-wrap .news-header h2 {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+main #news-wrap .news-header .news-btn-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 60px;
+}
+
+main #news-wrap .news-header .news-btn-wrap button {
+	width: 15px;
+	height: 15px;
+	background-color: blue;
+}
+
+main #news-wrap .news-lists {
+	overflow: hidden;    	
+	/* 자식의 높이값이 부모의 높이값에 영향을 주도록 만든다. */
+	/* 태그이름을 잘못 설정해서, overflow: hidden;이 설정되어 있지 않았음. 그래서 블로그랩이 news-lists영역이 되어버려서 한참을 헤맸음... */
+	border: solid 1px #dae1e6;
+}
+
+main #news-wrap .news-lists .news-list {
+	position: relative;
+	float: left;
+	width: 16.66%;
+	height: 65px;
+	background-color: #ffffff;
+
+	border-bottom: solid 1px #e4e8eb;
+	border-right: solid 1px #e4e8eb;
+
+	text-align: center;
+}
+
+/*
+main #news-wrap .news-lists .news-list:nth-child(6),
+main #news-wrap .news-lists .news-list:nth-child(12),
+main #news-wrap .news-lists .news-list:nth-child(18),
+main #news-wrap .news-lists .news-list:nth-child(24) {
+	border-right: none;
+}
+*/
+
+main #news-wrap .news-lists .news-list:nth-child(6n) {    /* 6번째 마다 오는 li태그에는 border-right를 없앤다. 위의 코드와 동일 */
+	border-right: none;
+}
+
+main #news-wrap .news-lists .news-list:nth-child(19),
+main #news-wrap .news-lists .news-list:nth-child(20),
+main #news-wrap .news-lists .news-list:nth-child(21),
+main #news-wrap .news-lists .news-list:nth-child(22),
+main #news-wrap .news-lists .news-list:nth-child(23),
+main #news-wrap .news-lists .news-list:nth-child(24) {
+	border-bottom: none;
+}
+
+main #news-wrap .news-lists .news-list img {
+	position: relative;
+
+	top: 50%;
+	transform: translateY(-50%);   
+	/* top, transform 코드 셋트로 꼭 알아두기. y축 중앙정렬  */
+}
+
+
+
+/* 블로그랩 */
+
+main #blog_wrap {
+	padding-top: 35px ;
+}
+
+main #blog_wrap .blog_header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding-bottom: 17px;
+}
+
+main #blog_wrap .blog_header .left-header {
+	display: flex;
+	flex-wrap: wrap;
+	/*justify-content: flex-start;*/ /* 디폴트값이므로 주석처리한다. */
+	align-items: center;
+}
+
+main #blog_wrap .blog_header .left-header h3 {
+	font-size: 14px;
+	margin-right: 8px;
+}
+
+main #blog_wrap .blog_header .left-header span {
+	font-size: 12px;
+	color: gray;
+}
+
+main #blog_wrap .blog_header .right-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+main #blog_wrap .blog_header .right-header span {
+	font-size: 12px;
+	color: grey;
+}
+
+main #blog_wrap .blog_header .right-header span strong {
+	color: black;
+}
+
+main #blog_wrap .blog_nav ul {
+	overflow: hidden;   /* 자식의 높이값이 부모의 높이값에 영향을 준다. */
+	border: solid 1px #eae1e6;
+}
+
+main #blog_wrap .blog_nav ul li {
+	float: left;
+	width: 12.5%;
+	height: 49px;
+	border-right: solid 1px #eae1e6;
+}
+
+main #blog_wrap .blog_nav ul li:last-child {
+	border-right: none;
+}
+
+main #blog_wrap .blog_nav ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	line-height: 49px;
+	text-align: center;
+}
+
+main #blog_wrap .blog_list_wrap {
+	padding-top: 18px;
+	border-bottom: solid 1px #dae1e6;
+}
+
+main #blog_wrap .blog_list_wrap li {
+	margin-bottom: 18px;
+}
+
+main #blog_wrap .blog_list_wrap li a {0
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+main #blog_wrap .blog_list_wrap li img {
+	width: 170px;
+	height: 114px;
+	margin-right: 21px;
+}
+
+main #blog_wrap .blog_list_wrap li .blog_list_info {
+	width: 559px;
+	padding-right: 17px;
+}
+
+main #blog_wrap .blog_list_wrap li .blog_list_info span {    
+	font-size: 12px;
+	color: #35ae5e;
+}
+/* blog_list_info 안에 있는 모든 span에 적용됨 */
+/* blog_list_info 안에 있는 date_wrap 안의 span에도 적용됨 */
+/* 뒤에서 date_wrap span을 따로 설정하여 캐스캐이딩한다 */
+
+main #blog_wrap .blog_list_wrap li .blog_list_info h4 {
+	font-size: 13px;
+}
+
+main #blog_wrap .blog_list_wrap li .blog_list_info p {
+	font-size: 13px;
+}
+
+main #blog_wrap .blog_list_wrap li .blog_list_info .date-wrap span {  /* 캐스캐이딩 */
+	/*font-size: 12px;*/   /* blog_list-info span에서 설정된 것이 그대로 상속된다. */
+	color: #505050;
+}
+
+main #blog_wrap .blog_media_wrap ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 18px 0;
+
+	border-bottom: solid 1px #dae1e6;
+}
+
+main #blog_wrap .blog_media_wrap ul .blog_media_info {
+	padding-top: 12px;
+}
+
+main #blog_wrap .blog_media_wrap ul .blog_media_info h4 {
+	padding-top: 13px;
+}
+
+main #blog_wrap .blog_media_wrap ul .blog_media_info span {
+	padding-top: 12px;
+}
+
+
+
+/* 네이버 오른쪽 */
+
+/* 로그인 */
+
+#main-right #account {
+	width: 100%;
+	border: solid 1px #dae1e6;
+	padding: 16px 16px 12px 16px;
+
+	margin-bottom: 12px;    /* 로그인창 아래의 배너부분과의 공백설정. banner에서 margin-top을 넣어줘도 됨. */ 
+}
+
+#main-right #account p {
+	font-size: 12px;
+	padding-left: 3px;
+	margin-bottom: 11px;
+	color: #888;
+}
+
+#main-right #account a {
+	display: block;
+	width: 100%;
+	background-color: #19ce60;
+	border-radius: 2px;
+
+	padding: 15px 0;
+	margin-bottom: 8px;
+
+	text-align: center;
+	font-size: 13px;
+	color: #fff;
+	font-weight: 700;
+}
+
+#main-right #account .account_sub { 
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 0 8px;
+}
+
+#main-right #account .account-sub span {
+	font-size: 12px;
+}
+
+
+/* 배너 */
+
+#main-right #banner {
+	width: 348px;
+	height: 198px;
+	background-color: #000000;
+
+	margin-bottom: 20px;
+}
+
+
+/* 쇼핑 */
+
+#main-right #shop_wrap .shop_title {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 12px 0;
+}
+
+#main-right #shop_wrap .shop_title h3,
+#main-right #shop_wrap .shop_title h4 {
+	font-size: 13px;
+	line-height: 17px;
+}
+
+#main-right #shop_wrap .shop_title h4 {
+	margin-left: 15px;
+}
+
+#main-right #shop_wrap .shop_title .right {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#main-right #shop_wrap .shop_content {
+	border: solid 1px #e4e8eb;
+	padding: 0 0 22px;   /* 3개만 작성하면 상-좌우-하 */
+}
+
+#main-right #shop_wrap .shop_content .shop_goods {
+	padding: 55px 8px;
+}
+/* 처음에는 shop_content 전체에 패딩 좌우가 설정되어 있었음 */
+/* shop_content안의 shop_lists에는 content의 패딩이 들어가면 안되기 때문에, shop_content의 좌우 패딩을 삭제한 뒤, shop_goods에만 좌우 패딩을 넣어준다. */
+
+
+
+
+#main-right #shop_wrap .shop_content .commerce_lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 12px 4px;
+	background-color: #f7f9fa;
+	border-bottom: solid 1px #dae1e6;
+}
+
+#main-right #shop_wrap .shop_content .commerce_lists li {
+	font-size: 12px;
+	margin: 0 10px 5px;
+}
+
+#main-right #shop_wrap .shop_content .commerce_lists li:nth-child(7),
+#main-right #shop_wrap .shop_content .commerce_lists li:nth-child(8),
+#main-right #shop_wrap .shop_content .commerce_lists li:nth-child(9),
+#main-right #shop_wrap .shop_content .commerce_lists li:nth-child(10),
+#main-right #shop_wrap .shop_content .commerce_lists li:nth-child(11) {
+	margin-bottom: 0;
+}
+
+
+#main-right #shop_wrap .shop_content .shop_goods .product_lists {
+	display: flex;	
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#main-right #shop_wrap .shop_content .shop_goods .product_lists li {
+	margin-bottom: 10px;
+}
+
+#main-right #shop_wrap .shop_content .shop_goods .product_lists .product_info {
+	text-align: center;
+}
+
+#main-right #shop_wrap .shop_content .shop_goods .product_lists h3,
+#main-right #shop_wrap .shop_content .shop_goods .product_lists span {
+	font-size: 12px;
+}
+
+
+
+/* footer */
+
+#main_footer {
+	background-color: #fafbfc;
+	border-top: solid 1px #e4e8eb;
+	padding-bottom: 92px;
+}
+
+#main_footer .news_lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 24px 0;
+}
+
+#main_footer .news_lists li {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#main_footer .news_lists li img {
+	margin-right: 15px;
+}
+
+#main_footer .news_lists li .news_info {
+	width: 172px ;
+}
+
+#main_footer .news_lists li .news_info span,
+#main_footer .news_lists li .news_info h3,
+#main_footer .news_lists li .news_info p {
+	font-size: 13px;
+}
+
+#main_footer .news_lists li .news_info span {
+	color:  #58c464;
+}
+
+#main_footer .corp_lists {
+	padding-top: 25px;
+	border-top: solid 1px #e4e8eb;
+}
+
+#main_footer .corp_lists li {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#main_footer .corp_lists li:before {
+	 content: "";
+	 display: inline-block;
+	 width: 1px;
+	 height: 11px;
+	 background-color: #e4e8eb;
+	 margin: 0 8px;
+	 /* 글자와 글자 사이의 "ㅣ" 모양을 넣기 위한 코드 */
+	 /* 기호를 넣는 것이 아니라, 1 x 11px 크기의 공간을 만들어서 "ㅣ"처럼 보이게 하는 것*/
+
+	 vertical-align: -1px;
+	 /* 글자와 조금 삐뚤빼둘해서 가지런히 정렬 */
+}
+
+#main_footer .corp_lists li:first-child:before {
+	content: initial;    /* 초기화하는 속성 (무효처리) */
+}
+
+#main_footer .corp_lists li a {
+	font-size: 12px;
+}
+
+
+
+
+
+/* 쇼핑페이지 */
+
+
+/* 쇼핑페이지 Default */
+
+#shop_body {
+	background-color: #e9ecef;	
+}
+
+.shop_container {
+	width: 1300px;
+	margin: 0 auto;
+}
+
+.shop_border {
+	border: solid 1px #ced2d7;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.h-100 {
+	height: 100%;
+}
+
+
+
+
+
+/* shop_header */
+ 
+#shop_header #shop_header_top {
+	width: 100%;
+	height: 36px;
+	background-color: #03c75a;
+	border-bottom: solid 1px #e8e8e8;
+}
+
+#shop_header #shop_header_middle {
+	width: 100%;
+	height: 66px;
+	background-color: #03c75a;
+	border-bottom: solid 1px #e8e8e8;
+}
+
+#shop_header nav {
+	width: 100%;
+	background-color: #ffffff; 
+	border-top: solid 1px #e8e8e8;
+	border-bottom: solid 1px #e8e8e8;
+}
+
+#shop_header nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	/*justify-content: flex-start;*/   /* 디폴트값 */
+	align-items: center;
+
+	padding: 13px 0 8px 0;
+} 
+
+#shop_header nav ul li {
+	margin-right: 16px;
+}
+
+
+
+/* shop_main */
+
+#shop_main .list_wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#shop_main .list_item {
+	position: relative;
+	width: 308px;
+	height: 496px;
+	/*background-color: yellow;  */
+
+	margin-bottom: 20px;
+}
+
+#shop_main .list_item.banner img {  /* class명을 적을때 띄어쓰기를 하지 않는다면, class명 두 개를 다 가지고 있는 태그가 선택된다.(and 조건이라고 생각하면 됨) */
+	width: 100%;
+	height: 100%;
+}
+
+
+#shop_main .list_item .category_wrap {
+	overflow: hidden;
+}
+
+
+#shop_main .list_item .category_wrap .category_left {
+	float: left;
+	width: 124px;
+	height: 100%;
+	background-color: #333949 ;
+}
+
+#shop_main .list_item .category_wrap .category_left h3 {
+	padding: 13px 0 14px 13px;
+	border-bottom: 1px solid #2b313f;
+
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.46);
+}
+
+#shop_main .list_item .category_wrap .category_left ul {
+
+}
+
+#shop_main .list_item .category_wrap .category_left li {
+
+}
+
+#shop_main .list_item .category_wrap .category_left a {
+	display: block;   /* li태그영역에 마우스를 올리면 바로 a태그가 적용되도록 (클릭할 수 있는 상태) */
+
+	padding: 7px 8px;
+
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.46);
+	font-weight: 700;
+}
+#shop_main .list_item .category_wrap .category_right {
+	float: right;
+	width: calc(100% - 124px);  
+	/* ★★category_wrap의 넓이값 308px에서 category_left의 넓이값 124px을 빼는 것이 아니라, category_wrap(shop_border와 같은 태그)에서 적용된 border값 좌우 1px씩을 뺀 306px-124px = 182px로 계산된다★ */
+	height: 100%;
+	background-color: #ffffff;
+}
+
+#shop_main .list_item .category_wrap .category_right_top {
+	width: 100%;
+	height: 306px;
+	border-bottom: solid 1px #e7e7e7;
+
+	text-align: center;
+	/* 자식인 category_info의 글자들과 image_wrap안의 img둘 다 중앙정렬된다. */
+	/* 굳이 img를 따로 <div>태그를 사용할 필요가 없었음 */
+}
+
+
+#shop_main .list_item .category_wrap .category_right_top .category_info {
+	padding: 20px 0;
+	/*text-align: center;*/   /* 부모인 .right_top에 작성하면 image_wrap과 함께 적용된다. */
+}
+
+
+#shop_main .list_item .category_wrap .headline {    /* right_top과 right_bottom의 headline 둘 다 적용된다. */
+	display: inline-block;
+
+	font-size: 12px;
+	border: solid 1px #00ab33;
+	color: #00ab33;
+
+	margin-bottom: 7px;
+}
+
+#shop_main .list_item .category_wrap .category_right_top .category_info h3 {
+	font-size: 18px;
+}
+
+#shop_main .list_item .category_wrap .category_right_top .category_info .price {
+	font-size: 16px;
+	color: skyblue;
+}
+     
+#shop_main .list_item .category_wrap .category_right_top .image_wrap {
+	/*text-align: center;*/    /* 부모인 .right_top에 작성하면 category_info와 함께 적용된다. */
+}
+
+#shop_main .list_item .category_wrap .category_right_bottom {
+	padding-top: 20px;
+	text-align: center;
+}
+
+#shop_main .list_item .category_wrap .category_right_bottom .tag_wrap .tag {
+	display: inline-block;   /* float처럼 공간의 넓이값에 맞추어서 줄바꿈 현상이 일어난다. */
+	width: auto;
+	max-width: 80px;
+	height: 24px;
+	background-color: #e8eef4;
+
+	margin: 6px 1px 0 1px;
+	padding: 0 5px;  
+
+	line-height: 26px;
+	font-size: 12px;
+	color: #666;
+	vertical-align: top;
+}
+
+
+
+
+
+/* 네이버 쇼핑 메인 (2) */
+
+#shop_main .list_item .list_half {
+	width: 100%;
+	height: 240px;
+	background-color: #ffffff;
+
+	/* 위에서 list_item을 position: relative;로 변경한다. list_half_top과 bottom을 absolute로 사용할 것이기 때문*/
+}
+
+#shop_main .list_item .list_half_top {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#shop_main .list_item .list_half_bottom {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+#shop_main .list_item .list_half .list_half_header {
+	position: relative;
+
+	width: 100%;
+	height: 62px;
+	background-color: #ffffff;
+	border-bottom: solid 1px #e7e7e7;
+
+	text-align: center;
+
+	padding-top: 7px;
+}
+
+#shop_main .list_item .list_half .list_half_header .half_overlay { 
+	position: absolute;    
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+/* 다음에 나오는 list_half_bg의 초록색 배경 위에 half_overlay의 검은색이 위로 덮여지는 이유 */
+/* list_half_bg는 2차원. half_overlay는 3차원이기 때문에 z축이 더 높기 때문 */
+
+/* shop_title_border의 흰색 글자가 검은색 위로 보이는 이유 */
+/* half_overlay, shop_title_border 둘 다 3차원이기 때문에 뒤에 나오는 3차원의 z축이 더 높기 때문 */
+
+
+#shop_main .list_item .list_half .list_half_header.list_half_bg {
+	background-color: green;
+	padding-top: 0;
+	border-bottom: solid 1px #ffffff;
+}
+
+#shop_main .list_item .list_half .list_half_header.list_half_bg .shop_title_border {
+	position: relative;
+	display: inline-block;
+	padding: 2px 4px;
+	
+	border: solid 1px #ffffff;
+	color: #ffffff;
+	/*font-size: 14px;*/   /* .list_half_header h3 에서 적용되었음 */
+
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+#shop_main .list_item .list_half .list_half_header .headline {
+	display: inline-block;
+	border: solid 1px #000000;
+	padding: 2px 4px;
+	margin-bottom: 5px;
+}
+
+#shop_main .list_item .list_half .list_half_header h3 {
+	font-size: 14px;
+}
+
+#shop_main .list_item .list_half .content_lists {
+	overflow: hidden;
+	height: 177px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_3 li {
+	float: left;
+	width: 33.33%;
+	height: 100%;    /* 부모의 높이값을 기준으로 100%라는 뜻. content_lists에서 높이값을 설정해 준다. */
+	border-right: solid 1px #f0f0f0;
+
+	text-align: center;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_3 li:last-child {
+	border-right: none;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_3 li img {
+	width: 100%;
+	height: 100px;
+	margin-bottom: 5px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_3 li h3 {
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_3 li span {
+	font-size: 12px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	padding-top: 11px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li {
+	width: 130px;
+	height: 150px;
+	margin-right: 8px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li:last-child {
+	margin-right: 0;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li .content_image_wrap {
+	position: relative;
+	width: 130px;
+	height: 90px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li .content_image_wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li .content_image_wrap .discount {
+	position: absolute;
+	display: block;
+	width: 42px;
+	height: 42px;
+	background-color: orange;
+	border-radius: 50%;
+
+	font-size: 14px;
+	color: #ffffff;
+	line-height: 42px;
+	text-align: center;
+
+	top: 6px;
+	right: 5px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li h3 {
+	font-size: 13px;
+}
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li .price {
+	color: #62a7ee;
+	font-size: 12px;
+}
+/* price 태그 안에 있는 모든 글자의 글자크기와 색을 지정 */
+
+#shop_main .list_item .list_half .content_lists.content_lists_2 li .price em {
+	font-size: 14px;
+	font-weight: bold;
+	font-style: nomal;   /* em태그는 font-style: italic;이 기본 적용된다. (기울어진 글자) */
+}
+
+
+
+#shop_main .list_item .list_row_3 {
+	border-top: none;
+	background-color: #ffffff;
+}
+
+#shop_main .list_item .list_row_3 li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	border-bottom: 1px solid #f0f0f0;
+	padding: 14px 19px 11px 19px;
+}
+
+#shop_main .list_item .list_row_3 li:last-child {
+	border-bottom: none;
+}
+
+#shop_main .list_item .list_row_3 li .list_image_wrap {
+	width: 90px;
+	height: 60px;
+}
+
+#shop_main .list_item .list_row_3 li .list_image_wrap img {
+	width: 100%;
+	height: 100%;
+	margin-right: 10px;
+}
+
+#shop_main .list_item .list_row_3 li .list_row_info span {
+	font-size: 12px;
+}
+
+#shop_main .list_item .list_row_3 li .list_row_info h3 {
+	font-size: 13px;
+}
+/* span태그와 h3태그의 글자크기를 바꾸기 전에는 flex가 줄바꿈 현상이 일어나서 제대로 적용되지 않았다. x축 정렬이 되지 않았었음 */
+
+
+
+
+
+/* 브랜드랩 */
+
+#shop_main .brand_wrap {
+	background-color: #ffffff;
+}
+
+
+#shop_main .brand_wrap .brand_lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 18px;
+}
+
+#shop_main .brand_wrap .brand_lists li {
+	width: 64px;
+	height: 64px;
+}
+
+#shop_main .brand_wrap .brand_lists li img {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+/* footer */
+
+#shop_footer {
+	padding-bottom: 180px;
+	text-align: center;
+}
+
+#shop_footer .policy_wrap {
+	border-top: solid 2px #5d5d5d;
+	padding-top: 27px;
+	margin-bottom: 11px;
+}
+
+#shop_footer .policy_wrap span {
+	font-size: 12px;
+}
+
+#shop_footer .policy_wrap span:first-child:before {
+	content: initial;    /* before에서 적용한 것 적용하지 않음 */
+}
+
+#shop_footer .policy_wrap span:before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 11px;
+	margin: 0 5px 0 0;
+	background-color: #d7d7d7;
+	vertical-align: -1;
+}
+
+#shop_footer .policy_wrap p {
+	font-size: 12px;
+	color: #888;
+	margin-bottom: 11px;
+}
+
+
+/* 웹툰 상단 */
+
+.webtoon-border {
+	border: solid 1px #ced2d7;
+}
+
+.webtoon-container {
+	width: 960px;
+	margin: 0 auto;
+
+}
+
+#webtoon-header {
+	background-color: #ffffff;
+}
+
+#webtoon-header .webtoon-header-top {
+		background-color: #ffffff;
+	border-bottom: solid 1px #f2f2f2;
+
+	padding: 10px 0 8px 0;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;   /* left와 right를 같은 x축에 두기 위해서 사용 */
+	align-items: center;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-left {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 550px;
+
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-left h2 {
+	font-size: 20px;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-left .bar {
+	width: 1px;
+	height: 13px;
+	background-color: #d2d2d2;
+
+	margin: 0 10px 0 8px;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-left h3 {
+	margin-right: 30px;
+
+	font-size: 16px;
+	/*color: grey;*/    
+	/* h3안의 a태그의 설정값때문에 글자색상이 적용되지 않음 */
+	/* 디폴트 설정값으로 a태그에 검은색을 지정해 두었음 */
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-left h3 a {
+	color: grey;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-input-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 315px;
+	height: 37px;
+	border: solid 1px #e5e5e5;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-input-wrap input {
+	width: calc(100% - 35px);
+	height: 100%;
+	border: none;
+	/*background-color: yellow;*/
+
+	padding: 0 10px;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-input-wrap input:focus {
+	outline: none;
+}
+
+#webtoon-header .webtoon-header-top .webtoon-header-input-wrap .btn-search {
+	width: 35px;
+	height: 100%;
+	background-color: #00d564;
+}
+
+#webtoon-header .webtoon-header-right {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#webtoon-header .webtoon-header-right .btn-login {
+	border: solid 1px #000000;
+
+	padding: 2px 4px;
+	margin-right: 20px; 
+
+	font-size: 12px;
+}
+
+#webtoon-header .webtoon-header-right .btn-menu {
+	width: 16px;
+	height: 16px;
+	background-color: blue;
+}
+
+#webtoon-header .webtoon-header-nav {
+	border-bottom: solid 1px #e5e5e5;
+}
+
+#webtoon-header .webtoon-header-nav .webtoon-container {
+	display: flex;      
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	/* flex를 사용하면 float를 사용하지 않아도 x축 정렬이 쉬워진다. */
+	/* float를 사용하면 부모태그에 overflow: hidden;값을 또 작성해야함 */
+}
+
+#webtoon-header .webtoon-header-nav nav {
+
+}
+
+#webtoon-header .webtoon-header-nav nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+#webtoon-header .webtoon-header-nav nav ul li {
+	width: auto;
+	height: 40px;
+}
+
+#webtoon-header .webtoon-header-nav nav ul li.on a {    /* 여러개의 li태그들 중에서 지정. 이 때는 띄어쓰기를 하지 않는다. */
+	background-color: #00d564;   
+	color: #ffffff;
+	/* li태그의 바탕색이 아니라, .on의 a태그 안에 바탕색을 넣는 이유 */
+	/* 1) 아래 태그에서 a태그의 공간을 만들어주었음 */
+	/* 2) 여러 개의 li태그들 중에서 class="on"에만 바탕색을 지정해야 하기 때문 */
+}
+
+#webtoon-header .webtoon-header-nav nav ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0 15px;
+
+	line-height: 40px;    /* Y축 중앙정렬을 위해서 공간의 높이값만큼의 line-height를 설정한다. */
+
+	font-size: 14px;
+}
+
+#webtoon-header .webtoon-header-nav .webtoon-header-link-wrap {
+
+}
+
+#webtoon-header .webtoon-header-nav .webtoon-header-link-wrap .icon-ex-mark {
+	display: inline-block;    /* 아이콘을 넣을 수 있는 i태그는 inline요소의 성격을 가지므로, 배경이미지를 넣기 위해서는 block요소로 변경해 주어야 한다. */
+	width: 16px;
+	height: 14px;
+	background-color: #000000;
+
+	vertical-align: middle;   
+	/* vertical-align을 사용하려면 inline요소의 성격을 가지고 있어야한다. */
+	/* 개발일지 5일차 참고 */
+	/* 정렬 시키려는 각각의 오브젝트들에 모두 작성해야 한다. */
+}
+
+#webtoon-header .webtoon-header-nav .webtoon-header-link-wrap a {  /* a태그는 inline요소의 성격을 가진다. */
+	vertical-align: middle;   /* 정렬 시키려는 각각의 오브젝트들에 모두 작성해야 한다. */
+	font-size: 12px;
+	color: #606060;
+}
+
+#webtoon-header .webtoon-header-nav .webtoon-header-link-wrap a:hover {
+	text-decoration: underline;
+}
+
+ 
+
+
+
+ /* 웹툰 메인 */
+
+#webtoon-main {
+	padding-bottom: 100px;
+}
+
+
+#webtoon-main .webtoon-container {
+	overflow: hidden;
+}
+
+
+
+/* 웹툰 메인 왼쪽 (1)  */
+
+ #webtoon-main .webtoon-main-left {
+ 	float: left;
+
+ 	width: 694px;
+ 	/*height: 2000px;*/
+ 	/*background-color: yellow;*/
+ }
+
+#webtoon-main .webtoon-main-left .webtoon-carousel {
+	overflow: hidden;
+	width: 694px;
+	height: 252px;
+	background-color: #ffffff;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel .webtoon-carousel-left {
+	float: left;
+	width: 112px;
+	padding: 20px 5px 0 15px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-left h2 {
+	font-size: 24px;
+	margin-bottom: 13px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-left h2 span {
+	color: #00d564;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-left p {
+	font-size: 12px;
+	color: #808285; 
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-left ul {
+	margin-top: 48px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-left li {
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-left li:last-child {
+	margin-bottom: 0;
+}
+
+
+
+#webtoon-main .webtoon-main-left .webtoon-carousel .webtoon-carousel-right {
+	float: right;
+	width: calc(100% - 112px);
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner {
+	width: 582px;
+	height: 195px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner img {
+	width: 100%;
+	height: 100%;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav {
+	position: relative;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 540px;
+	margin: 0 auto;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav ul li {
+	width: 135px;
+	height: 57px;
+	border-left: solid 1px #e5e5e5;
+	border-right: solid 1px #e5e5e5;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav ul li:first-child {
+	border-left: none;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav ul li:last-child {
+	border-right: none
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav ul li img {
+	width: 100%;
+	height: 100%;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav .btn {
+	position: absolute;
+	width: 20px;
+	height: 100%;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav .btn.btn-prev {
+	left: 0;
+	top: 0;
+	background-color: hotpink;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-carousel-banner-nav .btn.btn-next {
+	right: 0;
+	top: 0;
+	background-color: hotpink;
+}
+
+
+
+
+/* 웹툰 메인 왼쪽 (2) */
+
+#webtoon-main .webtoon-main-left .webtoon-banner {
+	width: 100%;
+	height: 80px;
+	background-color: black;
+
+	margin-top: 20px;
+
+ 	/*z-index: 100px;*/  
+ 	/* 3차원과 2차원이 같이 사용되면, 3차원이 뒤쪽으로 겹쳐지고, 2차원이 앞쪽에 표시된다. */
+ 	/* 단, 첫번째 형제태그가 2차원인 경우에는 레이어겹침 현상이 일어나지 않는다. */
+ 	/* 첫번째 형제태그가 3차원인 경우에만 적용 */
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content {
+	background-color: #ffffff;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header {
+	position: relative;
+	border-bottom: solid 1px #e5e5e5;
+	padding: 26px 0 10px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header.webtoon-content-header-recommend {
+	padding-bottom: 0;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header h2 {
+	font-size: 20px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header h2 span {
+	color: #00d564;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header nav {
+	margin-top: 20px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header nav li {
+	width: auto;
+	height: 22px;
+	margin-right: 15px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header nav li.on {
+	border-bottom: solid 2px #00d564;
+	margin-bottom: -1px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-header nav li a {
+	display: block;
+	padding-bottom: 6px;
+
+	font-size: 13px;
+	color: #737373;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-body nav {
+	padding: 12px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-body nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-body nav ul li {
+	margin-right: 8px;
+	font-size: 12px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content .webtoon-content-body nav ul li a {
+	color: gray;
+}
+
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-3 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-3 .webtoon-content-col-type-1 {
+	width: 210px;
+	height: 196px;
+	font-size: 12px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-1 img {
+	margin-bottom: 10px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-1 .webtoon-content-col-3-info h4 {
+	margin-bottom: 5px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-1 .webtoon-content-col-3-info p {
+	margin-bottom: 5px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-1 .webtoon-content-col-3-info span {
+	color: gray;
+}
+
+
+
+/* 웹툰 메인 왼쪽 (3) */
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-2 {
+	width: 33%;
+	font-size: 12px;
+	margin-top: 14px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-2 h3 {
+	font-size: 14px;
+	color: gray;
+	margin-bottom: 10px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-2 .webtoon-lists {
+
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-2 .webtoon-lists li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	
+	height: 90px;
+
+	margin-bottom: 20px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-type-2 .webtoon-lists li img {
+	margin-right: 10px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right {
+
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right h4 {
+
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right p {
+
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right span {
+
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right .webtoon-content-rating {
+	margin-top: 15px;
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right .webtoon-content-rating .star {
+	display: inline-block;
+
+	width: 60px;
+	height: 14px;
+	background-color: red;
+
+	vertical-align: middle;     /* vertical-align은 inline요소에서만 사용할 수 있다. */
+}
+
+#webtoon-main .webtoon-main-left .webtoon-content-col-info-right .webtoon-content-rating .score {
+	font-size: 12px;
+	color: grey;
+
+	vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 웹툰 메인 오른쪽 */
+
+/* 오른쪽 (1) */
+
+#webtoon-main .webtoon-main-right {
+	float: right;
+
+	width: 240px;
+ 	/*height: 2000px;*/
+ 	/*background-color: blue;*/
+} 
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap {
+	width: 100%;
+	height: 252px;
+	background-color: #f9f9fc;
+
+	padding: 20px 18px;
+	margin-bottom: 20px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap h3 {
+	font-size: 14px;
+	margin-bottom: 11px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap h3 span {
+	color: #00d564;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap img {
+	width: 100%;
+	height: 110px;
+
+	margin-bottom: 15px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap .webtoon-info {
+
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap .webtoon-info .webtoon-title-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 4px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap .webtoon-info .webtoon-title-wrap h4 a {
+	font-size: 13px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap .webtoon-info .webtoon-title-wrap a {
+	font-size: 12px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap .webtoon-info p {
+	font-size: 12px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-challenge-wrap .webtoon-info p a {
+	color: gray;
+}
+
+
+
+#webtoon-main .webtoon-main-right .webtoon-banner-type-1,
+#webtoon-main .webtoon-main-right .webtoon-banner-type-2 {
+	margin-bottom: 8px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-banner-type-1 {
+	/*width: 100%;*/
+	height: 240px;
+	background-color: yellow;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-banner-type-2 {
+	/*width: 100%;*/
+	height: 86px;
+	background-color: pink;
+}
+
+
+/* 인기만화 */
+
+#webtoon-main .webtoon-main-right .webtoon-popular {
+	background-color: #ffffff;
+	margin-bottom: 8px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 9px 12px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-header h2 {
+	font-size: 11px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	border-top: solid 1px #e1e1e1;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-tabs .tab {
+	width: 50%;
+	height: 30px;
+	border-bottom: solid 1px #e1e1e1;
+
+	text-align: center;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-tabs .tab:first-child {
+	border-right: solid 1px #e1e1e1;
+
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-tabs .tab.active {
+	border-bottom: solid 1px #ffffff;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-tabs .tab span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 30px;
+
+	font-size: 11px;
+}
+
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking {
+	width: 100%;
+	background-color: #ffffff;
+
+	padding: 15px 0 7px;
+}
+
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking ol {
+	/*list-style: decimal;   */
+	/* ol태그의 원래 설정값. 앞에서 none처리를 해 두었기 때문에 보이지 않았음. */
+	/* 사실상 ol태그를 사용하지 않고, 앞에 숫자를 넣는 것으로 디자인 작업을 하였음. ol리스트 다지인이 범위밖으로 튀어나가기 때문에 */
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking li {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	
+	padding: 0 13px;
+	margin-bottom: 7px;
+
+	font-size: 12px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-content  a {
+	display: inline-block;
+	overflow: hidden;
+	width: 140px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-content .rank {
+	margin-right: 5px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	width: 30px;
+	height: 12px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-box .status {
+	width: 12px;
+	height: 12px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-box .status.status-stay {
+	background-color: black;
+} 
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-box .status.status-up {
+	background-color: red;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-box .status.status-down {
+	background-color: blue;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank-box .number {
+	position: relative;   /* 요소의 원래 위치가 기준이 된다. */
+	top: -3px;
+	/* rank-box안의 status와 number의 높이값이 약간 차이가 나서 number의 y축을 조금 높여준다. */
+}
+
+
+
+
+
+/* 실시간 인기만화 */
+
+/* 썸네일 이미지가 포함된 랭킹 */
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .rank.rank-custom {
+	position: relative;
+	top: -10px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .image-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 140px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .image-wrap img {
+	width: 30px;
+	height: 33px;
+	margin-right: 5px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .image-wrap .webtoon-info {
+	/*background-color: yellow;*/
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .image-wrap .webtoon-info a {
+	width: 100px;
+}
+
+#webtoon-main .webtoon-main-right .webtoon-popular .webtoon-popular-ranking .image-wrap .webtoon-info .author {
+	display: block;
+}
+
+
+
+
+
+
+/* footer */
+
+#webtoon-footer {
+	padding-bottom: 78px;
+
+	font-size: 12px;
+}
+
+#webtoon-footer .webtoon-container {
+	border-top: solid 1px #e6e7e8;
+
+	padding-top: 40px;
+}
+
+
+#webtoon-footer	.webtoon-footer-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	margin-bottom: 32px;
+}
+
+#webtoon-footer	.webtoon-footer-wrap .webtoon-footer-left,
+#webtoon-footer	.webtoon-footer-wrap .webtoon-footer-right {
+	width: 50%;
+	padding-left: 25px;
+}
+
+#webtoon-footer	.webtoon-footer-wrap .webtoon-footer-right {
+	border-left: solid 1px grey;
+}
+
+#webtoon-footer	.webtoon-footer-wrap ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	margin-bottom: 8px;
+}
+
+#webtoon-footer	.webtoon-footer-wrap ul li {
+	/*margin-right: 5px;*/
+}
+
+#webtoon-footer	.webtoon-footer-wrap ul li:first-child:before {
+	content: initial;
+}
+
+#webtoon-footer	.webtoon-footer-wrap ul li:before {
+	display: inline-block;
+	content: "";
+	width: 1px;
+	height: 11px;
+	background-color: #d9d9d9;
+
+	vertical-align: -1px;
+	margin: 0 8px;
+}
+
+#webtoon-footer	.webtoon-footer-wrap ul li a {
+
+}
+
+#webtoon-footer	.webtoon-footer-wrap span {
+	text-transform: capitalize;
+}
+
+#webtoon-footer .webtoon-footer-paragraph {
+	padding-left: 25px;
+}
+
+
+
+
+
+
+/* 웹툰 상세페이지 */
+
+/* 웹툰 상세페이지 왼쪽영역 (1) */
+
+.webtoon-detail {
+	padding-top: 0;
+}
+
+.webtoon-detail .nav-1 {
+	background-color: #fafafa;
+	border-bottom: solid 1px #ededed;
+}
+
+.webtoon-detail .nav-1 ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.webtoon-detail .nav-1 ul li {
+	width: auto;
+	height: 36px;
+	margin-right: 28px;
+}
+
+.webtoon-detail .nav-1 ul li:last-child {
+	margin-right: 0;
+}
+
+.webtoon-detail .nav-1 ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	line-height: 36px;
+	text-align: center;
+
+	font-size: 12px;
+	color: #434343;
+}
+
+
+.webtoon-detail .nav-2 {
+	padding-top: 20px;
+
+	border-bottom: solid 1px #e5e5e5;
+}
+
+.webtoon-detail .nav-2 ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.webtoon-detail .nav-2 ul li {
+	margin-right: 14px;
+	padding-bottom: 5px;
+	border-bottom: solid 2px transparent; /* 투명한 색을 적용 */
+}
+
+.webtoon-detail .nav-2 ul li.on {
+	border-color: #00d564;
+	/*border-bottom: solid 2px #00d564;*/
+	margin-bottom: -1px;
+	font-weight: 700;
+}
+
+
+.webtoon-detail .nav-2 ul li:last-child {
+	margin-right: 0;
+}
+
+.webtoon-detail .nav-2 ul li a {
+	font-size: 13px;
+}
+
+
+
+
+
+
+/*웹툰 상세페이지 왼쪽영역 (2)*/
+
+.webtoon-detail #webtoon-this-month {
+	padding: 20px 0;
+}
+
+.webtoon-detail #webtoon-this-month h2 {
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.webtoon-detail #webtoon-this-month .webtoon-this-lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list {
+	width: 218px;
+} 
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list .this-image-wrap {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	margin-bottom: 5px;
+} 
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list .this-image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list .this-image-wrap .new-mark {
+	position: absolute;   /* 형제관계에서 나중에 나오는 z축이 더 높다 */
+	width: 30px;
+	background-color: #00C85e;
+	color: #ffffff;
+}
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list h3 {
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list .author {
+	display: block;   /* span태그는 inline요소이기 때문에 block으로 바꾸지 않으면 margin을 넣어도 실행되지 않는다. */
+	font-size: 12px;
+	color: #434343;
+	margin-bottom: 5px;
+}
+
+.webtoon-detail #webtoon-this-month .webtoon-this-list p {
+	font-size: 12px;
+}
+
+
+
+
+/*웹툰 상세페이지 왼쪽영역 (3)*/
+
+.webtoon-detail #webtoon-total-day {
+	padding-top: 20px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-total-title-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding-bottom: 8px;
+	border-bottom: solid 1px #eaeaea;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-total-title-wrap h2 {
+	font-size: 16px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-total-title-wrap ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-total-title-wrap li {
+	margin-right: 10px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-total-title-wrap li:last-child {
+	margin-right: 0;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-total-title-wrap a {
+	font-size: 12px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	/*align-items: stretch;*/  /* default값이다. */
+	/* center로 작성하면 li태그의 갯수가 동일하지 않을때 y축 정렬이 달라지기 때문에 strech로 설정해 준다. */ 
+	/* flex-start로 설정해도 정렬은 되지만, border-right의 길이가 제각각이 됨. 각각의 높이값이 독립적으로 설정되기 때문 */
+	/* 높이값이 다른 경우, stretch를 적용하면 가장 길이가 긴 높이의 값에 맞추어 적용됨 */
+
+	border-bottom: solid 1px #f4f4f4;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list {
+	width: 14.2855%;
+	text-align: center;
+	border-right: solid 1px #f4f4f4;
+
+	padding: 0 8px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list.active {
+	background-color: #3e3e3a;
+	border-color: #3e3e3a;   /* 활성화 되었을 때, 경계색을 배경색과 동일하게 맞춰 준다. */
+	color: #fbcb00;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list:last-child {
+	border-right: none;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list span {
+	display: block;
+	height: 32px;
+	line-height: 32px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list .webtoon-list {
+	margin-bottom: 10px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list .webtoon-list img {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.webtoon-detail #webtoon-total-day .webtoon-day-list span,
+.webtoon-detail #webtoon-total-day .webtoon-day-list .webtoon-list h3 {
+	font-size: 14px;
+}
+
+
+
+
+
+/* 네이버 블로그 상단영역 */
+
+.blog-container {
+	width: 1080px;
+	margin: 0 auto; 
+}
+
+#blog-header .blog-header-top {
+	height: 60px;
+	background-color: #00c73c;
+	border-bottom: 1px solid #51b036;
+}
+
+#blog-header .blog-header-top .blog-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+#blog-header .blog-header-top .blog-header-left {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+
+	/*margin-top: 9px;*/     
+	/* blog-header-right에서 flex를 지정하지 않았을 때는 함께 대칭으로 맞출 대상이 없었기 때문에, 마치 justify: flex-start;처럼 표현되었음 */
+}
+
+#blog-header .blog-header-top .blog-header-left h2 {
+	font-size: 20px;
+	font-weight: 700;
+	margin-right: 20px;
+}
+
+#blog-header .blog-header-top .blog-header-left h2 a {
+	color: #ffffff;
+	/* 폰트 색은 h2에 작성하면 적용되지 않는다. a태그 기본 글자 색이 적용되기 때문 */
+}
+
+#blog-header .blog-header-top .blog-header-input-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center; 
+}
+
+#blog-header .blog-header-top .blog-search-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 325px;
+	height: 40px;
+	background-color: #ffffff;
+
+	margin-right: 5px;
+}
+
+#blog-header .blog-header-top .blog-search-wrap input {
+	width: calc(100% - 40px);
+	height: 40px;
+	background-color: #ffffff;
+	border: solid 1px #4da733;
+
+	padding: 0 15px;
+}
+
+#blog-header .blog-header-top .blog-search-wrap input:focus {
+	outline: none;
+}
+
+#blog-header .blog-header-top .blog-search-wrap .btn-search {
+	width: 40px;
+	height: 40px;
+	background-color: #28a93a;
+	border: solid 1px #239e36;
+}
+
+#blog-header .blog-header-top .btn-total-search {
+	width: auto;
+	height: 40px;
+	background-color: #28a93a;
+	border: solid 1px #239e36;
+
+	padding: 0 5px;
+
+	line-height: 40px;
+	color: #ffffff;
+}
+
+#blog-header .blog-header-top .blog-header-right {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#blog-header .blog-header-top .blog-header-right .btn-login {
+	display: inline-block;
+	border: solid 1px #239e36;
+
+	padding: 2px 5px;
+	margin-right: 20px;
+
+	color: #ffffff;
+	font-size: 12px;
+}
+
+#blog-header .blog-header-top .blog-header-right .btn-menu {
+	width: 60px;
+	height: 60px;
+	background-color: #00c73c;   /* button태그는 기본으로 회색이 배경색으로 지정됨 */
+	border-left: 1px solid #239e36;
+	border-right: 1px solid #239e36;
+
+	cursor: pointer;
+}
+
+#blog-header .blog-header-nav {
+	height: 40px;
+	background-color: #ffffff;
+	border-bottom: #e5e5e5 1px solid;
+}
+
+#blog-header .blog-header-nav .blog-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#blog-header .blog-header-nav .nav-left {
+
+}
+
+#blog-header .blog-header-nav .nav-left ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+#blog-header .blog-header-nav .nav-left ul li {
+	height: 40px;
+	margin-right: 16px;
+	border-bottom: solid 2px transparent;
+}
+
+#blog-header .blog-header-nav .nav-left ul li.on {
+	border-bottom: solid 2px #00ab33;
+}
+
+#blog-header .blog-header-nav .nav-left ul li a {
+	display: block;
+
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+
+	font-size: 13px;
+}
+
+#blog-header .blog-header-nav .nav-right {
+
+}	
+
+#blog-header .blog-header-nav .nav-right ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center
+}
+
+#blog-header .blog-header-nav .nav-right ul li {
+	width: auto;
+	height: 26px;
+
+	margin-left: 8px;
+}
+
+#blog-header .blog-header-nav .nav-right ul li.on a {
+	background-color: #00c73c;
+	border: solid 1px rgba(0, 0, 0, 0.7);
+	color: #ffffff;
+}
+
+#blog-header .blog-header-nav .nav-right ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff;
+	border: 1px solid #cecece;
+
+	line-height: 26px;
+	padding: 0 10px;
+
+	font-size: 13px;
+}
+
+
+
+
+
+
+/* 블로그 핫토픽 영역 */
+
+.blog-main #hot-topic {
+	height: 305px;
+	background-color: #f5f5f6;
+	padding: 20px 0 15px;
+}
+
+.blog-main #hot-topic .blog-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.blog-main #hot-topic .hot-topic-left {
+	position: relative;
+	width: 770px;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	margin-bottom: 11px;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-heading h3 {
+	font-size: 16px;
+	font-weight: 600;
+	color: #e55e5e;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-heading i {
+	display: block;
+	width: 8px;
+	height: 13px;
+	background-color: grey;
+	margin: 0 8px;
+
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-heading a {
+	font-size: 16px;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-lists li {
+	position: relative;
+	width: 252px;
+	height: 240px;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-lists li img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.blog-main #hot-topic .hot-topic-left .topic-lists li p {
+	position: absolute;         /* 형제태그 모두 3차원일 경우, html 뒤쪽에 작성된 태그가 z축이 높다. */
+	width: 100%;
+	background-color: rgba(55, 66, 87, 0.9);
+	/* hex converter rgb를 검색하면 색상코드를 rgb로 변환할 수 있다. */
+
+	padding: 20px 0;
+
+	bottom: 0;   
+	/* 부모 공간의 가장 아래 부분에 위치하도록 설정 */
+	/* 부모태그의 position이 3차원인 경우, 부모태그의 공간을 기준으로 이동한다. (현재 position: relative;) */
+	/* 참고) 부모태그의 position이 2차원인 경우, 브라우저 공간을 기준으로 이동한다. */
+
+	color: #ffffff;
+
+	text-align: center;
+}
+
+.blog-main #hot-topic .pagination-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.blog-main #hot-topic .pagination-wrap a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 4px;
+	border: solid 1px rgba(221, 221, 223, 0.8);
+	background-color: #f6f6f7;
+
+	color: #888;
+
+	font-size: 12px;
+	text-align: center;   /* x축 중앙정렬 */
+	line-height: 20px;    /* y축 중앙정렬 */ 
+}
+
+
+.blog-main #hot-topic .hot-topic-right {
+	position: relative;
+	width: 280px;
+	padding-top: 30px;
+}
+/* topic-banner에 대한 넓이, 높이값을 입력하지 않았을 때, pagination-wrap이 정상적인 위치에 올라가지 않았음 */
+/* pagination-wrap은 position: absolute;로 적용되어 있음 */
+/* absolute는 부모의 높이값에 영향을 주지 않는다. 그래서 부모인 hot-topic-right의 공간에서 높이값이 정해지지 않아서 top, right : 0임에도 위치 되지 않았음 */
+
+.blog-main #hot-topic .hot-topic-right .topic-banner {
+	width: 280px;
+	height: 240px;
+	background-color: black;
+}
+
+
+
+
+
+/* 블로그 메인 왼쪽 영역 */
+
+.blog-main #blog-main-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.blog-main #blog-main-content .blog-main-left {
+	width: 770px;
+	height: 2000px;
+	/*background-color: lightgoldenrodyellow;*/
+}
+
+.blog-main #blog-main-content .blog-main-left #blog-main-notification {
+	background-color: #ffffff;
+	padding: 54px 0;
+
+	text-align: center;
+}
+
+.blog-main #blog-main-content .blog-main-left #blog-main-notification p {
+	font-size: 16px;
+	line-height: 30px;
+}
+
+
+.blog-main #blog-main-content .blog-main-left #blog-article {
+
+}
+
+.blog-main #blog-main-content .blog-main-left #blog-article .blog-article-nav {
+	background-color: #ffffff;
+	border-top: solid 1px #999999;
+	border-bottom: solid 1px #999999;
+
+	padding: 10px;
+
+	font-size: 14px;
+}
+
+.blog-main #blog-main-content .blog-main-left .blog-article-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.blog-main #blog-main-content .blog-main-left .blog-article-nav ul li {
+ margin-right: 11px;
+}
+
+.blog-main #blog-main-content .blog-main-left .blog-article-nav ul li a {
+
+}
+
+
+
+.blog-main #blog-main-content .blog-main-left .blog-article-lists {
+
+}
+
+
+.blog-main #blog-main-content .blog-article-lists li {
+	width: 100%;
+	border-bottom: solid 1px #eeeeef;
+
+	padding: 25px 0 23px;
+}
+
+.blog-main #blog-main-content .blog-article-lists li a {
+	display: block;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+}
+
+.blog-main #blog-main-content .blog-article-lists li a .blog-article-info {
+	width: 573px;
+}
+
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .blog-profile-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .blog-profile-wrap img {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+
+	margin-right: 10px;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .blog-profile-wrap .blog-profile-info {
+
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .blog-profile-info h3 {
+	font-size: 14px;
+	margin-bottom: 3px;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .blog-profile-info p {
+	font-size: 11px;
+	color: #959595;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info h2 {
+	margin-top: 16px;
+	font-size: 17px;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .paragraph {
+	margin-top: 10px;
+	font-size: 13px;
+	color: #666666;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .comments {
+	margin-top: 14px;
+	color: #959595;
+	font-size: 12px;
+	letter-spacing: -0.1px;
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .comments span {
+	margin-right: 9px;r
+}
+
+.blog-main #blog-main-content .blog-article-lists .blog-article-info .comments span em {
+	font-style: normal;
+}
+
+
+
+
+
+
+/* 블로그 메인 오른쪽 영역 */
+
+.blog-main #blog-main-content .blog-main-right {
+	width: 280px;
+	/*height: 2000px;*/
+	/*background-color: lightpink;*/
+}
+
+/* 블로그 로그인 */
+
+.blog-main #blog-main-content .blog-main-right #blog-account {
+	width: 100%;
+	background-color: #f5f5f6;
+	border: solid 1px #dddddf;
+	padding: 20px 15px;
+
+	margin-bottom: 12px;   
+}
+
+.blog-main #blog-main-content .blog-main-right #blog-account p {
+	font-size: 11px;
+	margin-bottom: 7px;
+}
+
+.blog-main #blog-main-content .blog-main-right #blog-account a {
+	display: block;
+	width: 100%;
+	background-color: #ffffff;
+	border: solid 1px #cccccc;
+	border-radius: 4px;
+
+	padding: 10px 0;
+	margin-bottom: 12px;
+
+	text-align: center;
+	font-size: 13px;
+	color: #000000;
+	font-weight: 700;
+}
+
+.blog-main #blog-main-content .blog-main-right #blog-account .account_sub { 
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 0 8px;
+}
+
+.blog-main #blog-main-content .blog-main-right #blog-account .account-sub span {
+	font-size: 11px;
+	color: #888;
+}
+
+
+/* 블로그 배너 */
+
+.blog-main #blog-main-content .blog-main-right #blog-banner {
+	width: 100%;
+	height: 240px;
+	background-color: black;
+	border: solid #ddddf 1px;
+}
+
+
+/* 블로그 가이드 */
+
+.blog-main #blog-main-content .blog-main-right #blog-guide {
+	background-color: #ffffff;
+	border: solid #dddddf 1px;
+	border-width: 0 1px 1px;
+	/* border-width를 사용하면 border-top, border-right등을 따로따로 입력하지 않아도 된다. */
+
+	padding: 19px 20px;
+}
+
+
+.blog-main #blog-main-content .blog-main-right #blog-guide a {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+}
+.blog-main #blog-main-content .blog-main-right #blog-guide p {
+	width: 145px;
+	font-size: 15px;
+	line-height: 25px;
+	color: #222;
+}
+
+.blog-main #blog-main-content .blog-main-right #blog-guide p span {
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.blog-main #blog-main-content .blog-main-right #blog-guide i {
+	display: inline-block;
+
+	width: 88px;
+	height: 65px;
+	background-color: green;
+}
+
+
+/* 공지사항 */
+
+.blog-main #blog-main-content .blog-main-right #blog-notice {
+	background-color: #ffffff;
+	border: solid #dddddf 1px;
+	border-width: 0 1px 1px;
+
+	padding: 24px 22px 22px;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-title-wrap {
+	margin-bottom: 13px;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-title-wrap a {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-title-wrap a h3 {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-title-wrap a i {
+	width: 8px;
+	height: 13px;
+	background-color: #000000;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-lists {
+	font-size: 12px;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-lists li {
+	margin-bottom: 4px;
+}
+
+.blog-main #blog-main-content #blog-notice .blog-notice-lists li:last-child {
+	margin-bottom: 0;
+}
+
+
+
+/* helper */
+
+.blog-main #blog-main-content #blog-helper {
+	border: solid 1px #dddddf;
+	border-width: 0 1px 1px;
+	background-color: #ffffff;
+
+	padding: 24px 16px;
+}
+
+.blog-main #blog-main-content #blog-helper .blog-helper-lists {
+
+}
+
+.blog-main #blog-main-content #blog-helper .blog-helper-lists li {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.blog-main #blog-main-content #blog-helper .blog-helper-lists li a {
+	display: block;    /* 여백부분에서도 마우스 클릭이 가능하도록 공간값을 지정 */ 
+	height: 35px;
+	line-height: 35px;
+
+	padding-left: 35px; 
+
+	background-image: url(../img/checkbox.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 20px 20px;
+}
+
+
+
+
+/* 네이버 블로그 footer */
+
+#blog-footer {
+	padding-top: 40px;
+	padding-bottom: 55px;
+	background-color: #f6f6f6;
+
+	text-align: center;
+}
+
+#blog-footer ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+
+	margin-bottom: 20px;
+}
+
+#blog-footer ul li {
+
+}
+
+#blog-footer ul li a:before {
+	content: "";   /* 빈 공간을 만들기 위해서는 '', "" 둘 다 사용이 가능하다. */
+	display: inline-block;
+	width: 1px;
+	height: 12px;
+	background-color: #d7d7d7;
+
+	margin: 0 6px;
+
+	vertical-align: -1px;
+}
+
+#blog-footer ul li:first-child a:before {
+	content: initial;
+}
+
+
+
+
+
+
+
+
+/* 블로그 챌린지 프로그램 (blog-detail) */
+
+.blog-border {
+	border: 1px solid #eaeaec;
+}
+
+.blog-main-detail {
+	padding-bottom: 100px;
+}
+
+
+.blog-main-detail #program {
+	background-color: #634ea4;
+	padding: 62px 0 50px;
+
+	color: white;
+}
+
+.blog-main-detail #program h3 {
+	font-size: 38px;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+.blog-main-detail #program p {
+	font-size: 16px;
+}
+
+
+
+.blog-main-detail #program-nav {
+	border-bottom: solid 1px #ebebeb;
+	background-color: #fff;
+
+	padding: 10px 0;
+}
+
+
+.blog-main-detail #program-nav .blog-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+
+.blog-main-detail #program-nav a {
+	font-size: 14px;
+	color: #666;
+}	
+
+.blog-main-detail #program-nav h4 {
+	font-weight: 600;
+}
+
+.blog-main-detail #program-nav h4 a {
+	color: #000;
+}
+
+.blog-main-detail #program-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.blog-main-detail #program-nav ul li {
+
+}
+
+.blog-main-detail #program-nav ul li a:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 12px;
+	background-color: #ababab;
+	margin: 0 12px;
+
+	vertical-align: -1px;
+}
+
+
+
+
+.blog-main-detail #program-info {
+	background-color: #f8f8f8;
+	padding: 44px 0 36px;
+}
+
+.blog-main-detail #program-info .program-info-wrap {
+	display: flex;
+	flex-wrap: wrap;
+
+	margin-bottom: 50px;
+}
+
+.blog-main-detail #program-info .program-info-wrap h4 {
+	font-size: 32px;
+	color: #7d55c8;
+	line-height: 44px;
+	letter-spacing: -0.3px;
+
+	margin-right: 120px;
+}
+
+.blog-main-detail #program-info .program-txt-wrap {
+
+}
+
+.blog-main-detail #program-info .program-txt-wrap p {
+	font-size: 18px;
+	line-height: 28px;
+	color: #262626;
+
+	margin-bottom: 18px;
+}
+
+.blog-main-detail #program-info .program-txt-wrap a {
+	font-size: 13px;
+	color: #7d55c8;
+}	
+
+
+.blog-main-detail #program-info .program-msg-box {
+	padding: 29px;
+	background-color: #ffffff;
+}
+
+.blog-main-detail #program-info .program-msg-box .from {
+	display: block;
+	font-size: 13px;
+	font-weight: 600;
+	color: #7d55c8;
+
+	margin-bottom: 6px;
+}
+
+.blog-main-detail #program-info .program-msg-box .program-msg-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;   /* y축 아래쪽에 위치됨 */
+}
+
+.blog-main-detail #program-info .program-msg-box .program-msg-wrap .question {
+	width: 829px;
+	font-size: 18px;
+}
+
+.blog-main-detail #program-info .program-msg-box .question .date {
+	color: #693bbc;
+}
+
+.blog-main-detail #program-info .program-msg-box .question .txt:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 18px;
+	background-color: #d5d5d5;
+
+	margin: 0 9px;
+
+	vertical-align: -1px;
+}
+
+.blog-main-detail #program-info .program-msg-box .program-msg-wrap a {
+	display: block;
+	width: 179px;
+	height: 40px;
+	background-color: #7d55c8;
+	color: #fff;
+	line-height: 40px;
+	text-align: center;
+}
+
+.blog-main-detail #program-info .program-msg-box .program-msg-wrap a:hover {
+	background-color: rgba(125, 85, 200, 0.8);
+	/* 마우스를 올렸을 때, 배경만 투명한 흰색으로 바뀜 */
+}
+
+
+
+.blog-main-detail #program-day {
+	background-color: #fff;
+}
+
+.blog-main-detail #program-day .program-day-lists {
+
+}
+
+.blog-main-detail #program-day .program-day-lists .program-day-list {
+
+}
+
+.blog-main-detail #program-day .program-day-list .program-day-title-wrap {
+	padding: 36px 0 16px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-day-title-wrap .date {
+	color: #693bbc;
+	font-size: 16px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-day-title-wrap .txt {
+	font-size: 16px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-day-title-wrap .txt:before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 16px;
+	background-color: #d5d5d5;
+
+	margin: 0 9px;
+
+	vertical-align: -4px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-day-title-wrap .msg {
+	font-size: 14px;
+	color: #666;
+}
+
+.blog-main-detail #program-day .program-day-list .program-image-lists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.blog-main-detail #program-day .program-day-list .program-image-lists li {
+	width: 175px;
+	height: 228px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-image-lists a {
+
+}
+
+.blog-main-detail #program-day .program-day-list .program-image-lists a img {
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-image-lists a h4 {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.blog-main-detail #program-day .program-day-list .program-image-lists a span {
+	font-size: 12px;
+	color: #959595;
+}
+
+
+
+
+
+/* 뉴스 */
+
+.news-container {
+	width: 1080px;
+	margin: 0 auto;
+}
+
+.news-flex-between {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.news-flex-start {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.news-flex-end {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+
+
+/* 뉴스 상단 영역 */
+
+#news-header {
+	background-color: #3f63bf;
+}
+
+#news-header .news-header-left {
+	padding: 17px 0;
+}
+
+#news-header .news-header-left ul {
+
+}
+
+#news-header .news-header-left ul li {
+	font-size: 15px;
+}
+
+#news-header .news-header-left ul li.on {
+	font-size: 20px;
+}
+
+#news-header .news-header-left ul li a {
+	color: #fff;
+}
+
+#news-header .news-header-left ul li a:before {
+	display: inline-block;
+	content: "";
+	width: 1px;
+	height: 15px;
+	background-color: #000;
+	opacity: 0.2;
+
+	margin: 0 10px;
+	vertical-align: -1px;
+}
+
+#news-header .news-header-left ul li:first-child a:before {
+	content: initial;  
+	/* none 또는 initial 둘 다 입력 가능 */
+}
+
+#news-header .news-header-right {
+
+}
+
+#news-header .news-header-right .btn-login {
+	display: block;
+	width: 55px;
+	height: 25px;
+	border: solid 1px #000000;
+
+	line-height: 25px;
+	text-align: center;
+
+	color: #ffffff;
+
+	font-size: 12px;
+
+	margin-right: 20px;
+}
+
+#news-header .news-header-right .btn-menu {
+	width: 55px;
+	height: 55px;
+	background-color: #3f63bf;
+	border: solid #000000;
+	border-width: 0 1px;
+}
+
+
+
+
+#news-header .sub-nav {
+	background-color: #ffffff;
+	border-top: solid 1px #000;
+	border-bottom: solid 1px #e3e3e3;
+}
+
+#news-header .sub-nav ul li {
+	width: auto;
+	height: 46px;
+	margin-right: 16px;
+}
+
+#news-header .sub-nav ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+	border-bottom: solid 2px transparent;
+
+	line-height: 46px;
+}
+
+#news-header .sub-nav ul li a.on {
+	border-bottom: solid 2px #3f63bf;
+	color: #3f63bf;
+}
+
+
+
+#news-header .sub-nav .news-search-wrap {
+	width: 280px;
+	height: 30px;
+	border: solid 1px #e1e1e1;
+	background-color: #fafafa;
+}
+
+#news-header .sub-nav .news-search-wrap input {
+	width: calc(100% - 30px);
+	height: 100%;
+	border: none;   /* 원래 input태그가 가지고 있는 border를 삭제해 준다. */
+
+	font-size: 12px;
+	color: #888;
+	padding: 3px 9px;
+}
+
+#news-header .sub-nav .news-search-wrap input:focus {
+	outline: none;
+}
+
+#news-header .sub-nav .news-search-wrap .btn-search {
+	width: 30px;
+	height: 100%;
+	background-color: blue;
+}
+
+
+
+
+
+
+/* 뉴스 헤드라인 */
+
+#news-headline {
+	padding-top: 20px;
+}
+
+#news-headline .news-container {
+	border-bottom: solid 1px #000;
+	padding-bottom: 12px;    /* padding-bottom을 news-headline에 넣으면, border-bottom 값이 브라우저 왼쪽 끝과 오른쪽 끝까지로 설정된다. */
+}
+
+#news-headline .news-headline-menu-wrap {
+	margin-bottom: 15px;
+}
+
+#news-headline .news-headline-menu-wrap .main-lists {
+
+}
+
+#news-headline .news-headline-menu-wrap .main-lists li {
+	margin-right: 20px;
+
+	font-size: 15px;
+}
+
+#news-headline .news-headline-menu-wrap .main-lists li a {
+
+}
+
+
+#news-headline .news-headline-menu-wrap .sub-lists {
+
+}
+
+#news-headline .news-headline-menu-wrap .sub-lists li {
+	font-size: 12px;
+}
+
+#news-headline .news-headline-menu-wrap .sub-lists li a {
+	
+}
+
+#news-headline .news-headline-menu-wrap .sub-lists li a:before {
+	content: '';
+	display: inline-block;
+
+	width: 1px;
+	height: 12px;
+	background-color: #e0e0e0;
+	margin: 0 5px;
+
+	vertical-align: -1px;
+}
+
+#news-headline .news-headline-menu-wrap .sub-lists li:first-child a:before {
+	content: none;
+}
+
+
+#news-headline .news-headline-lists {
+	margin-bottom: 12px;
+}
+
+#news-headline .news-headline-lists li {
+	width: 255px;	
+	height: 178px;
+	border: solid 1px #ccc;
+}
+
+#news-headline .news-headline-lists li a {
+	display: block;
+
+	width: 100%;
+	height: 100%;
+}
+
+#news-headline .news-headline-lists li a article {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#news-headline .news-headline-lists li a article h3 {
+	width: 100%;
+	height: 44px;
+	/*background-color: greenyellow;*/
+
+	line-height: 44px;
+	text-align: center;
+}
+
+#news-headline .news-headline-lists li a article .image-wrap {
+	position: relative;
+	width: 100%;
+	height: calc(100% - 44px);
+	/*background-color: lightpink;*/
+}
+
+#news-headline .news-headline-lists li a article .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#news-headline .news-headline-lists li a article .image-wrap .overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#news-headline .news-headline-lists .headline-info {
+	position: absolute;
+	width: 100%;
+	/*background-color: palevioletred;*/
+	padding: 15px 26px;
+
+	left: 0;
+	bottom: 0;
+
+	color: #fff;
+}
+
+#news-headline .news-headline-lists .headline-info i {
+	display: block;
+	width: 26px;
+	height: 26px;
+	background-color: #000;
+	border-radius: 50%;
+
+	margin-right: 10px;
+}
+
+#news-headline .news-headline-lists .headline-info div {
+	width: calc(100% - 38px);
+}
+
+#news-headline .news-headline-lists .headline-info span {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#news-headline .news-headline-lists .headline-info p {
+	display: inline;
+	font-size: 12px;
+}
+
+#news-headline .news-headline-arrows {
+
+}
+
+#news-headline .news-headline-arrows .btn-wrap {
+	margin-right: 15px;
+}
+
+#news-headline .news-headline-arrows .btn {
+	display: block;
+	width: 24px;
+	height: 24px;
+	border: solid 1px #dcdddc;
+}
+
+#news-headline .news-headline-arrows .btn-prev {
+	background-color: greenyellow;
+	border-right: none;
+}
+
+#news-headline .news-headline-arrows .btn-next {
+	background-color: lightpink;
+}
+
+#news-headline .news-headline-arrows .btn-up {
+	background-color: black;
+}
+
+
+
+
+
+
+/* 뉴스 메인 */
+
+#news-main .news-container {
+	overflow: hidden;
+}
+
+
+
+/* 뉴스 왼쪽 영역 */
+
+#news-main .news-left {
+	float: left;
+	width: 750px;
+	padding-right: 26px;
+	padding-bottom: 100px;
+}
+
+#news-main .news-left .news-main-wrap {
+	padding: 25px 0;
+	border-bottom: #dedede solid 1px;
+}
+
+#news-main .news-left .news-main-header {
+	margin-bottom: 14px;
+}
+
+#news-main .news-left .news-main-header-left {
+
+}
+
+#news-main .news-left .news-main-header-left h3 {
+	margin-right: 12px;
+}
+
+#news-main .news-left .news-main-header-left h3 a {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+#news-main .news-left .news-main-header-left a {
+	font-size: 13px;
+}
+
+#news-main .news-left .news-main-header-left ul {
+	margin-top: -2px;
+}
+
+#news-main .news-left .news-main-header-left li a:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #e5e5e5;
+
+	vertical-align: -1px;
+
+	margin: 0 8px;
+}
+
+#news-main .news-left .news-main-header-left li:first-child a:before {
+	content: none;
+}
+
+
+#news-main .news-left .news-main-header-right i {
+	display: block;
+	width: 24px;
+	height: 20px;
+
+	margin-left: 8px;
+}
+
+#news-main .news-left .news-main-header-right i.icon-1 {
+	background-color: yellow;
+}
+
+#news-main .news-left .news-main-header-right i.icon-2 {
+	background-color: lightpink;
+}
+
+#news-main .news-left .news-main-header-right i.icon-3 {
+	background-color: slategrey;
+}
+
+
+
+#news-main .news-left .news-main-body {
+
+}
+
+#news-main .news-left .news-main-body .image-wrap {
+	width: 220px;
+	margin-right: 25px;
+}
+
+#news-main .news-left .news-main-body .image-wrap img {
+	width: 100%;
+	height: 140px;
+	border: solid 1px #000000;
+	margin-bottom: 6px;
+}
+
+#news-main .news-left .news-main-body .image-wrap h4 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+}
+
+#news-main .news-left .news-main-body .news-lists {
+	width: 430px;
+}
+
+#news-main .news-left .news-main-body .news-lists li {
+	margin-bottom: 11px;
+	font-size: 20px;
+}
+
+#news-main .news-left .news-main-body .news-lists li a {
+	display: inline-block;
+	max-width: 350px;
+	overflow: hidden;
+	white-space: nowrap;     /* hidden으로 표시된 부분의 줄바꿈을 하는지 안하는지를 결정하는 것 */
+	text-overflow: ellipsis;
+
+	vertical-align: middle;
+}
+
+#news-main .news-left .news-main-body .news-lists li span {
+	font-size: 12px;
+	color: #888;
+
+	vertical-align: middle;
+}
+
+#news-main .news-left .news-main-body .news-lists li span:before {
+	content: '';
+	position: relative;
+	display: inline-block;
+	width: 14px;
+	height: 11px;
+	background-color: grey;
+
+	margin: 0 4px;
+	
+	top: 1px;
+}
+ 
+
+
+
+
+
+/* custom */
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-header ul li a {
+	cursor: default;   
+	/* 커서를 올렸을 때, 손가락 모양이 아닌 일반 마우스 커서모양으로 뜬다 */
+	/* 하지만, 클릭을 했을 때 페이지가 이동하는 a태그의 기능은 그대로 작동된다. */
+	/* 페이지 이동기능을 끄기 위해서는 Java Script를 이용하면 된다. */
+} 
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-header ul li:first-child a:before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #e5e5e5;
+
+	margin: 0 8px 0 0;
+	vertical-align: -1px;
+}
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-body .image-wrap {
+	position: relative;
+	width: 300px;
+	height: 190px;
+}
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-body .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-body .image-wrap h4 {
+	text-overflow: initial;
+	white-space: initial;
+
+	position: absolute;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+
+	padding: 10px 15px;
+
+	left: 0;
+	bottom: 0;
+
+	color: #fff;
+	text-align: center;
+}
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-body .news-lists {
+	width: 390px;
+}
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-body .news-lists li a {
+	vertical-align: middle;
+	width: 360px;
+	max-width: initial;
+
+	/* max-width만 설정해 두면, 글자가 있는 공간까지만 a태그로 인식되어서 a태그 오른쪽의 icon의 위치를 가지런하게 표시 하지 못한다.  */
+}
+
+#news-main .news-left .news-main-wrap.news-custom .news-main-body .news-lists li i {
+	display: inline-block;
+	width: 22px;
+	height: 16px;
+	background-color: black;
+
+	vertical-align: middle;
+}
+
+
+
+
+
+
+/* 뉴스 메인 오른쪽 영역 */
+
+#news-main .news-right {
+	float: right;
+	width: 327px;
+	border-left: #dfdfdf solid 1px;
+	padding: 25px 0 40px 26px;
+}
+
+#news-main .news-right #news-popular {
+	margin-bottom: 30px;
+}
+
+#news-main .news-right #news-popular .news-popular-header {
+	align-items: flex-start;
+	margin-bottom: 10px;
+}
+
+#news-main .news-right #news-popular .news-popular-header h3 {
+	font-size: 13px;
+}
+
+#news-main .news-right #news-popular .news-popular-header p {
+	font-size: 12px;
+}
+
+#news-main .news-right #news-popular .news-popular-header span {
+	color: #7d7d7d;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#news-main .news-right #news-popular .news-popular-lists {
+
+}
+
+#news-main .news-right #news-popular .news-popular-lists li {
+	padding: 6px 0;
+}
+
+#news-main .news-right #news-popular .news-popular-lists .news-popular-info {
+	width: 202px;
+
+	border-bottom: solid 1px #e3e3e3;
+	padding-bottom: 6px;
+}
+
+#news-main .news-right #news-popular .news-popular-lists .news-popular-info h4 {
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+#news-main .news-right #news-popular .news-popular-lists .news-popular-info h4 a {
+
+}
+
+#news-main .news-right #news-popular .news-popular-lists .news-popular-info i {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-color: grey;
+	border-radius: 50%;
+
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+#news-main .news-right #news-popular .news-popular-lists .news-popular-info span {
+	position: relative;
+
+	font-size: 12px;
+	color: #888;
+
+	vertical-align: middle;
+	top: -1px;
+}
+
+#news-main .news-right #news-popular .news-popular-lists img {
+
+}
+
+#news-main .news-right .news-banner {
+	width: 300px;
+	height: 250px;
+	background-color: #000;
+	border: #e3e3e3 solid 1px;
+
+	margin-bottom: 30px;
+}
+
+
+
+#news-main .news-right #news-today {
+
+}
+
+#news-main .news-right #news-today .news-today-header {
+	margin-bottom: 11px;
+}
+
+#news-main .news-right #news-today .news-today-header h3 {
+	font-size: 14px;
+}
+
+#news-main .news-right #news-today .news-today-header span {
+	font-size: 12px;
+}
+
+#news-main .news-right #news-today .news-today-header span:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #e5e5e5;
+
+	margin: 0 7px;
+	vertical-align: -1px;
+}
+
+#news-main .news-right #news-today .news-today-body {
+	padding: 13px 20px 20px;
+	border: solid #e8e8e8 1px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-notice-lists {
+
+}
+
+#news-main .news-right #news-today .news-today-body .news-notice-lists li {
+	border: 1px #f2f2f2 solid;
+	padding-bottom: 12px;
+	margin-bottom: 12px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-notice-lists li:last-child {
+	margin-bottom: 0;
+}
+
+#news-main .news-right #news-today .news-today-body .news-notice-lists li h4 {
+	display: inline-block;
+	font-size: 12px;
+	vertical-align: middle;
+	margin-right: 8px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-notice-lists li p {
+	display: inline-block;
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists {
+	padding: 10px 0 7px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists li {
+	width: 50%;
+}
+
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists li:last-child {
+	padding-left: 20px;
+	border-left: solid 1px #f2f2f2;	
+}
+ 
+#news-main .news-right #news-today .news-today-body .news-stock-lists li span {
+	font-size: 12px;
+	color: #777;
+	margin-bottom: 8px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists li h3 {
+	font-size: 24px;
+	margin-bottom: 5px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists li em {
+	font-style: normal;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists li em.down {
+	color: #066fd1;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-lists li em.up {
+	color: #fe4638;
+}
+
+
+
+#news-main .news-right #news-today .news-today-body .news-stock-search-wrap {
+	width: 100%;
+	height: 30px;
+	border: solid 1px #f2f2f2;
+}
+ 
+#news-main .news-right #news-today .news-today-body .news-stock-search-wrap input {
+	width: calc(100% - 30px);
+	height: 100%;
+	background-color: #fff;
+	border: none;
+	padding: 3px 9px;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-search-wrap input:focus {
+	outline: none;
+}
+
+#news-main .news-right #news-today .news-today-body .news-stock-search-wrap .btn-search {
+	width: 30px;
+	height: 100%;
+	background-color: #000;
+}
+
+
+
+
+
+/* 하단 영역 */
+
+#news-nav-bottom {
+	border-top: solid 1px #dfdfdf;
+	border-bottom: solid 1px #e3e7ee;
+
+	padding: 15px 0;
+}
+
+#news-nav-bottom li {
+	margin-right: 10px;
+}
+
+	
+
+
+
+
+
+
+
+
+/* 연예뉴스 ent.html */
+
+.ent-container {
+	width: 980px;
+	margin: 0 auto;
+}
+
+.ent-flex-start {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.ent-flex-center {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.ent-flex-end {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.ent-flex-between {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ent-border {
+	border: 1px solid #000;
+}
+
+
+
+
+/* 연예뉴스 헤더 영역 */
+
+#ent-header {
+	width: 100%;
+	height: 62px;
+	background-color: #fff;
+	border-bottom: solid 2px #f1f1f1;
+
+	padding: 20px 25px 0;
+}
+
+#ent-header .ent-header-left {
+
+}
+
+#ent-header .ent-header-left ul {
+
+}
+
+#ent-header .ent-header-left ul li {
+	font-weight: 700;
+}
+
+#ent-header .ent-header-left ul li a {
+
+}
+
+#ent-header .ent-header-left ul li:last-child a {
+	color: #9f9f9f;
+}
+
+#ent-header .ent-header-left ul li a:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 12px;
+	background-color: #dddddd;
+
+	margin: 0 8px;
+
+	vertical-align: -1px;
+}
+
+#ent-header .ent-header-left ul li:first-child a:before {
+	content: initial;
+}
+
+
+#ent-header .ent-header-center {
+
+}
+
+#ent-header .ent-header-center ul {
+
+}
+
+#ent-header .ent-header-center ul li {
+	font-weight: 700;
+	font-size: 16px;
+	
+	padding: 0 15px;
+}
+
+#ent-header .ent-header-center ul li a {
+	display: inline-block;
+	border-bottom: solid 2px #fff;
+
+	padding-bottom: 2px;
+}
+
+#ent-header .ent-header-center ul li.on {
+	
+}
+
+#ent-header .ent-header-center ul li.on a {
+	display: inline-block;
+	color: #e24587;
+
+	border-bottom: solid 2px #e24587;
+	/* li태그에 넣으면 li의 공간만큼 밑줄이 생기기 때문에 a태그 글자밑에만 밑줄을 넣으려면 a태그에 border-bottom을 넣어준다. */
+}
+
+
+#ent-header .ent-header-right {
+
+}
+
+#ent-header .ent-header-right .btn-login {
+	width: 45px;
+	height: 20px;
+	border: solid 1px #000;
+
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+	margin: 0 9px;
+}
+
+#ent-header .ent-header-right .btn-menu {
+	width: 16px;
+	height: 16px;
+	background-color: grey;
+	margin: 0 9px;
+}
+
+#ent-header .ent-header-right .btn-search {
+	width: 25px;
+	height: 25px;
+	background-color: #000;
+	margin-left: 9px;
+	/* margin병합현상 : 형제관계의 태그들 사이에서, margin-top, margin-bottom이 겹쳐질 경우에는 margin값이 더 큰 쪽으로 병합되는 현상 */
+	/* 하지만 지금 상황과 같이 margin-right, margin-left에서는 적용되지 않는다. */
+}
+
+
+
+
+
+/* 연예뉴스 메인 */
+
+#ent-main {
+	/*padding-bottom: 1000px;*/
+	/* 맨 밑부분이 너무 브라우저 아래쪽에 자리하기 때문에 padding-bottom을 적용하여 가독성을 높여준다. */
+}
+
+#ent-main .ent-container {
+	overflow: hidden;
+	/* 자식의 높이값이 부모의 높이에 영향을 끼치게 하기 위해 */
+}
+
+
+
+/* 연예뉴스 메인 왼쪽 */
+
+#ent-main .ent-left {
+	float: left;
+	width: 654px;
+	/*height: 2000px;*/
+	background-color: yellow;
+
+	padding-right: 24px;
+}
+
+
+/* 연예뉴스 헤드라인 */
+
+#ent-main .ent-left #ent-media-headline {
+	padding-bottom: 20px;
+	border-bottom: solid 1px #f1f1f1;
+}
+
+#ent-main .ent-left #ent-media-headline ul {
+
+}
+
+#ent-main .ent-left #ent-media-headline ul li {
+	width: 148px;
+	height: 204px;
+	border-radius: 3px 3px 0 0;
+	/* 왼쪽 상단 모서리부터 시계방향으로 */
+}
+
+#ent-main .ent-left #ent-media-headline ul li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#ent-main .ent-left #ent-media-headline ul li a .media-top {
+	position: relative;
+	height: 144px;
+}
+
+#ent-main .ent-left #ent-media-headline .media-top img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+}
+
+#ent-main .ent-left #ent-media-headline .media-top .time {
+	display: block;
+	position: absolute;
+	height: 16px;
+	border-radius: 2px;
+	background-color: rgba(0, 0, 0, .56);
+	/* 0.56 또는 .56 둘 다 사용이 가능 */
+
+	padding: 0 4px;
+	right: 8px;
+	top: 8px;
+
+	color: #fff;
+	font-size: 11px;
+	line-height: 16px;
+}
+
+#ent-main .ent-left #ent-media-headline .media-top .icon-play {
+	display: block;
+	position: absolute;
+
+	width: 28px;
+	height: 28px;
+	background-color: dimgray;
+	border-radius: 50%;
+
+	left: 8px;
+	bottom: 7px;
+}
+
+#ent-main .ent-left #ent-media-headline .media-bottom {
+	height: 60px;
+	background-color: #444a60;
+}
+
+#ent-main .ent-left #ent-media-headline .media-bottom p {
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: -1px;
+	/* 글자간 좌우 간격을 조정하는 속성 */
+
+	padding: 11px 12px 0;
+
+	color: #fff;
+}
+
+
+/* 연예뉴스 섹션 1 */
+
+#ent-main .ent-left #ent-section-1 {
+
+}
+
+#ent-main .ent-left #ent-section-1 li {
+	border-bottom: solid 1px #f1f1f1;
+	padding: 20px 0;
+}
+
+#ent-main .ent-left #ent-section-1 li a {
+
+}
+
+#ent-main .ent-left #ent-section-1 li a img {
+	width: 148px;
+	height: 90px;
+	border: #000 solid 1px;
+}
+
+#ent-main .ent-left #ent-section-1 li a .ent-news-wrap {
+	width: 462px;
+}
+
+#ent-main .ent-left #ent-section-1 .ent-news-wrap h3 {
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+#ent-main .ent-left #ent-section-1 .ent-news-wrap p {
+	margin-bottom: 8px;
+
+	font-size: 12px;
+	color: #898989;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+#ent-main .ent-left #ent-section-1 .ent-news-wrap .bottom-wrap {
+
+}
+
+#ent-main .ent-left #ent-section-1 .ent-news-wrap .bottom-wrap .source,
+#ent-main .ent-left #ent-section-2 .ent-bottom .source {
+	font-size: 12px;
+	font-weight: 400;
+	color: #a7a7a7;
+}
+
+#ent-main .ent-left #ent-section-1 .ent-news-wrap .bottom-wrap .count,
+#ent-main .ent-left #ent-section-2 .ent-bottom .count {
+	display: inline-block;
+
+	width: 20px;
+	height: 20px;
+	border: solid 1px #000;
+	border-radius: 5px;
+	
+	text-align: center;
+	line-height: 20px;
+
+	font-size: 10px;
+}
+
+
+/* 연예뉴스 섹션 2 */
+
+#ent-main .ent-left #ent-section-2 {
+	border-bottom: solid 1px #f1f1f1;
+	padding: 20px 0;
+}
+
+#ent-main .ent-left #ent-section-2 ul {
+
+}
+
+#ent-main .ent-left #ent-section-2 li {
+	width: 200px;
+}
+
+#ent-main .ent-left #ent-section-2 a {
+
+}
+
+#ent-main .ent-left #ent-section-2 img {
+	width: 200px;
+	height: 122px;
+	border: solid 1px #000;
+
+	margin-bottom: 20px;
+}
+
+#ent-main .ent-left #ent-section-2 h3 {
+	font-size: 13px;
+	line-height: 20px;
+
+	margin-bottom: 9px;
+}
+
+#ent-main .ent-left #ent-section-2 .ent-bottom {
+
+}
+
+
+
+/* 연예뉴스 섹션 3 */
+
+#ent-main .ent-left #ent-section-3 {
+	padding: 24px 0;
+	border-bottom: #e4e4e4 1px solid;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap {
+	margin-bottom: 18px;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap {
+
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .count-wrap {
+
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .count-wrap span {
+	font-size: 12px;
+	color: #666;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .count-wrap span em {
+	font-style: normal;
+	color: #ff0080;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .button-wrap {
+	margin-left: 8px;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .button-wrap .btn {
+	width: 24px;
+	height: 24px;
+	border: solid 1px #000;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .button-wrap .btn-prev {
+	border-right: none;
+	background-color: cadetblue;
+}
+
+#ent-main .ent-left #ent-section-3 .title-wrap .right-wrap .button-wrap .btn-next {
+	background-color: limegreen;
+}
+
+#ent-main .ent-left #ent-section-3 ul {
+
+}
+
+#ent-main .ent-left #ent-section-3 ul li {
+	width: 148px;
+	height: 148px;
+	border: 1px solid #000;
+}
+
+#ent-main .ent-left #ent-section-3 ul li a {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#ent-main .ent-left #ent-section-3 ul li img {
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+}
+
+#ent-main .ent-left #ent-section-3 ul li span {
+	position: absolute;
+	display: block;
+	max-width: 100%;
+	background-color: #f40080;
+
+	padding: 0 5px;
+
+	left: 0;
+	top: 0;
+
+	font-size: 11px;
+	font-weight: 700;
+	color: #fff;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#ent-main .ent-left #ent-section-3 ul li h3 {
+	position: absolute;
+	width: 100%;
+	min-height: 32px;
+	background-color: rgba(0, 0, 0, .3);
+
+	padding: 9px 10px 8px;
+
+	left: 0;
+	bottom: 0;
+
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+
+
+
+ /* 연예뉴스 섹션 4 */
+
+ #ent-main .ent-left #ent-section-4 {
+ 	padding: 23px 0;
+ 	border-bottom: solid 1px #e4e4e4;
+
+ }
+
+ #ent-main .ent-left #ent-section-4 .title-wrap {
+ 	/*margin-bottom: 18px;*/
+ }
+
+ #ent-main .ent-left #ent-section-4 .title-wrap h3 {
+ 	font-size: 16px;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul {
+ 	
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li {
+ 	padding: 18px 0;
+ 	border-bottom: solid 1px #f1f1f1;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li:last-child {
+ 	border-bottom: initial;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li a {
+
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li .ent-info {
+ 	width: 528px;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li .ent-info h3 {
+ 	font-size: 14px;
+ 	font-weight: 700;
+ 	margin-bottom: 7px;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li .ent-info p {
+ 	font-size: 12px;
+ 	font-weight: 400;
+ 	line-height: 20px;
+ 	color: #898989;
+
+ 	margin-bottom: 9px;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li .ent-info .source {
+ 	font-size: 11px;
+ 	font-weight: 400;
+ 	color: #a7a7a7;
+ }
+
+ #ent-main .ent-left #ent-section-4 ul li img {
+ 	width: 88px;
+ 	height: 88px;
+ 	border: solid 1px #000;
+ }
+
+#ent-main .ent-left #ent-section-4 .btn-more {
+	display: block;	
+	width: 100%;
+	height: 40px;
+	background-color: #fff;   /* button태그의 기본 배경색은 회색이다. */
+	border: solid 1px #e8e8e8;
+
+	line-height: 40px;
+
+	text-align: center;
+
+	color: #444;
+}
+
+
+
+
+
+ /* 연예뉴스 섹션 5 */
+
+
+#ent-main .ent-left #ent-section-5 {
+	padding: 24px 0 14px;
+	border-bottom: solid #e4e4e4 1px;
+}
+
+#ent-main .ent-left #ent-section-5 .title-wrap {
+	margin-bottom: 20px;
+}
+
+#ent-main .ent-left #ent-section-5 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-left #ent-section-5 .title-wrap a {
+	font-size: 12px;
+	color: #999;
+}
+
+#ent-main .ent-left #ent-section-5 ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;   /* 또는 stretch로 적용 */
+}
+
+#ent-main .ent-left #ent-section-5 ul li {
+
+}
+
+#ent-main .ent-left #ent-section-5 ul li a {
+	display: block;
+	width: 80px;
+	height: 100%;
+
+	text-align: center;
+}
+
+#ent-main .ent-left #ent-section-5 ul li a img {
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+
+	margin-bottom: 10px;
+}
+
+#ent-main .ent-left #ent-section-5 ul li a h4 {
+	
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 16px;
+	letter-spacing: -1px;
+}
+
+
+
+
+
+/* 연예뉴스 섹션 6 */
+
+#ent-main .ent-left #ent-section-6 {
+	padding: 24px 0;
+	border-bottom: solid 1px #e4e4e4;
+}
+
+#ent-main .ent-left #ent-section-6 .title-wrap {
+	margin-bottom: 17px;
+}
+
+#ent-main .ent-left #ent-section-6 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-left #ent-section-6 .title-wrap a {
+	font-size: 12px;
+	color: #999;
+}
+
+
+#ent-main .ent-left #ent-section-6 ul {
+
+}
+
+#ent-main .ent-left #ent-section-6 ul li {
+	width: 148px;
+}
+
+#ent-main .ent-left #ent-section-6 ul li a {
+
+}
+
+#ent-main .ent-left #ent-section-6 ul .img-wrap {
+	position: relative;
+	width: 148px;
+	height: 85px;
+	border: solid 1px #000;
+
+	margin-bottom: 10px;
+}
+
+#ent-main .ent-left #ent-section-6 .img-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#ent-main .ent-left #ent-section-6 .img-wrap .icon-play {
+	position: absolute;
+	display: block;
+
+	width: 28px;
+	height: 28px;
+	background-color: grey;
+	border-radius: 50%;
+
+	left: 8px;
+	bottom: 7px;
+}
+
+#ent-main .ent-left #ent-section-6 a h4 {
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+
+#ent-main .ent-left #ent-section-6 ul span {
+	font-size: 11px;
+	color: #141414;
+}
+
+#ent-main .ent-left #ent-section-6 ul .source {
+	color: #999;
+}
+
+#ent-main .ent-left #ent-section-6 ul .source:after {
+	content: '';
+	display: inline-block;
+	width: 2px;
+	height: 2px;
+	background-color: #d3d3d3;
+
+	vertical-align: top;
+
+	margin: 13px 2px 0 4px;
+
+}
+
+#ent-main .ent-left #ent-section-6 ul .program:after {
+	content: '';
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	background-color: red;
+
+	vertical-align: top;
+
+	margin: 10px 2px 0 4px;
+}
+
+
+
+
+
+/* 연예뉴스 섹션 8 */
+
+#ent-main .ent-left #ent-section-8 {
+	padding: 24px 0 20px;
+	border-bottom: solid 1px #e4e4e4;
+}
+
+#ent-main .ent-left #ent-section-8 .title-wrap {
+	margin-bottom: 17px;
+}
+
+#ent-main .ent-left #ent-section-8 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-left #ent-section-8 .title-wrap a {
+	font-size: 12px;
+	color: #999;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap {
+	align-items: stretch;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-left {
+
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-left img {
+	width: 200px;
+	height: 122px;
+	margin-bottom: 11px;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-left h4 {
+	font-size: 12px;
+	font-weight: 700;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-right {
+	width: 412px;
+	margin-left: 18px;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-right ul {
+
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-right li {
+	margin-bottom: 10px;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-right li:last-child {
+	margin-bottom: 0;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-right a { 
+	display: inline-block;
+	max-width: 350px;
+	margin-right: 5px;
+	vertical-align: middle;
+
+	font-size: 14px;
+	font-weight: 700;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#ent-main .ent-left #ent-section-8 .movie-wrap .movie-right span {
+	vertical-align: middle;
+
+	font-size: 11px;
+	color: #898989;
+}
+
+
+
+
+/* 연예뉴스 섹션 9 */
+
+
+#ent-main .ent-left #ent-section-9 {
+
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap {
+	/*margin-bottom: 17px;*/
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap div {
+	align-items: flex-start;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap ul {
+	position: relative;
+	top: -4px;
+	margin-left: 19px;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap li {
+
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap li a {
+	font-size: 12px;
+	color: #181818;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap li a:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 10px;
+	background-color: #e8e8e8;
+
+	margin: 0 10px;
+
+	vertical-align: -1px;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap li:first-child a:before {
+	content: none;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap li a.on {
+	font-weight: 700;
+	color: #e2458f;
+	border-bottom: solid 1px #e2458f;
+}
+
+#ent-main .ent-left #ent-section-9 .title-wrap .more {
+	font-size: 12px;
+	color: #999;
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists {
+
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists li {
+	padding: 18px 0;
+	border-bottom: solid 1px #f1f1f1;
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists a {
+	/*display: block;*/
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists .rank {
+	display: block;
+	width: 40px;
+	text-align: center;
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists .news-info-wrap {
+	width: calc(100% - 40px);
+	/* 630px - 40px = 590px */
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists .news-info-txt {
+	width: calc(100% - 90px);
+	/* 590px - 90px = 500px */
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists .news-info-txt h4 {
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 9px;
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists .news-info-txt p {
+	font-size: 12px;
+	font-weight: 400;
+	color: #898989;
+	margin-bottom: 8px;
+
+	/*display: inline-block;*/   /* inline-block으로 설정하면, 신문사명과 같은 줄로 나란히 표시되기 때문! */
+	/*overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;*/   
+	/* 말줄임표가 아닌 줄바꿈이었음. */
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists .news-info-txt span {
+	font-size: 11px;
+	color: #898989;
+}
+
+#ent-main .ent-left #ent-section-9 .news-lists img {
+	width: 88px;
+	height: 88px;
+}
+
+
+
+
+
+
+/* 연예뉴스 섹션 10 */
+
+#ent-main .ent-left #ent-section-10 {
+	padding: 24px 0 20px;
+	border-bottom: solid 1px #e4e4e4;
+}
+
+#ent-main .ent-left #ent-section-10 .title-wrap {
+	margin-bottom: 17px;
+}
+
+#ent-main .ent-left #ent-section-10 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-left #ent-section-10 .title-wrap a {
+	font-size: 12px;
+	color: #999;
+}
+
+#ent-main .ent-left #ent-section-10 ul {
+
+}
+
+#ent-main .ent-left #ent-section-10 li {
+	width: 200px;
+	border: solid 1px #000;
+}
+
+#ent-main .ent-left #ent-section-10 a {
+	display: block;
+}
+
+#ent-main .ent-left #ent-section-10 li img {
+	/*width: 200px;*/   /* 이렇게 설정하면 border와 개체가 겹쳐진다. border-sizing: border-box;속성 때문 */
+	width: 100%;
+	height: 122px;
+}
+
+#ent-main .ent-left #ent-section-10 li .txt-wrap {
+	padding: 13px 14px 18px;
+}
+
+#ent-main .ent-left #ent-section-10 li .txt-wrap span {
+	font-size: 11px;
+}
+
+#ent-main .ent-left #ent-section-10 li .txt-wrap .program {
+	color: #ff0080;
+}
+
+#ent-main .ent-left #ent-section-10 li .txt-wrap .program:after {
+	content: '';
+	display: inline-block;
+	width: 2px;
+	height: 2px;
+	background-color: #d3d3d3;
+	vertical-align: top;
+	margin: 9px 2px 0 4px;
+}
+
+#ent-main .ent-left #ent-section-10 li .txt-wrap .source {
+	color: #999;
+}
+
+#ent-main .ent-left #ent-section-10 li .txt-wrap h4 {
+	padding-top: 8px;
+
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 20px;
+	min-height: 36px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 연예뉴스 메인 오른쪽 */
+
+#ent-main .ent-right {
+	float: right;
+	width: 324px;
+	height: 2000px;
+	/*background-color: pink;*/
+
+	padding-left: 24px;
+}	
+
+
+
+/* 오른쪽 배너 */
+
+#ent-main .ent-right .ent-banner {
+	width: 380px;
+	height: 250px;
+	background-color: grey;
+
+	border: solid 1px #000;
+
+	margin-bottom: 30px;
+}
+
+
+
+/* 연예뉴스 섹션 11 */
+
+#ent-main .ent-right #ent-section-11 {
+	padding-bottom: 12px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+#ent-main .ent-right #ent-section-11 .title-wrap {
+	margin-bottom: 8px;
+}
+
+#ent-main .ent-right #ent-section-11 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-main .ent-right #ent-section-11 .title-wrap a {
+	font-size: 12px;
+	color: #999;
+}
+
+#ent-main .ent-right #ent-section-11 ol {
+
+}
+
+#ent-main .ent-right #ent-section-11 li {
+	margin-bottom: 10px;
+}
+
+#ent-main .ent-right #ent-section-11 li a {
+
+}
+
+#ent-main .ent-right #ent-section-11 li .rank {
+	display: inline-block;
+	width: 16px;
+
+	font-size: 16px;
+	color: #e2458f;
+
+	text-align: center;
+	
+	vertical-align: middle;
+}
+
+#ent-main .ent-right #ent-section-11 li p {
+	display: inline-block;
+	width: 270px;
+	vertical-align: middle;
+	font-size: 12px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+ 
+/* 연예뉴스 섹션 12 */
+
+#ent-section-12 {
+	border-bottom: solid 1px #f2f2f2;
+	padding-bottom: 24px;
+}
+
+#ent-section-12 ul {
+	margin-bottom: 12px;
+}
+
+#ent-section-12 ul li {
+	padding: 14px 0;
+	border-bottom: solid 1px #f2f2f2;
+}
+
+#ent-section-12 ul li a {
+
+}
+
+#ent-section-12 ul li .title-wrap {
+	margin-bottom: 10px;
+}
+
+#ent-section-12 ul li .title-wrap .title-left {
+
+}
+
+#ent-section-12 ul li .title-wrap .title-left .count {
+	width: 20px;
+	height: 15px;
+	padding: 2px 4px;
+	border: solid 1px #e2458f;
+
+	color: #e2458f;
+	font-size: 10px;
+
+	margin-right: 8px;
+}
+
+#ent-section-12 ul li .title-wrap .title-left h3 {
+	color: #e2458f;
+	font-size: 12px;
+}
+
+#ent-section-12 ul li .title-wrap .icon-arrow {
+	width: 8px;
+	height: 12px;
+	background-color: #e2458f;
+}
+
+#ent-section-12 ul li .article-content {
+
+}
+
+#ent-section-12 ul li .article-content .content-left {
+	width: 230px;
+	padding: 6px 20px 0 0;
+}
+
+#ent-section-12 ul li .article-content .content-left h4 {
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 18px;
+	margin-bottom: 6px;
+}
+
+#ent-section-12 ul li .article-content .content-left .source {
+	font-size: 11px;
+	color: #a6a6a6;
+
+}
+
+#ent-section-12 ul li .article-content img {
+	width: 70px;
+	height: 70px;
+	border: 1px solid #000;
+}
+
+#ent-section-12 .bottom {
+
+}
+
+#ent-section-12 .bottom .btn-wrap {
+
+}
+
+#ent-section-12 .bottom .btn-wrap .btn {
+	width: 24px;
+	height: 24px;
+	border: 1px solid #f2f2f2;
+}
+
+#ent-section-12 .bottom .btn-wrap .btn-prev {
+	background-color: gray; 
+	border-right: none;
+}
+
+#ent-section-12 .bottom .btn-wrap  .btn-next {
+	background-color: yellow;
+}
+
+#ent-section-12 .bottom .more {
+	font-size: 12px;
+	color: #999;
+}
+
+
+
+
+
+/* 연예뉴스 섹션 13 */
+
+#ent-section-13 {
+	padding: 20px 0 2px;
+	border-bottom: solid 1px #e8e8e8;
+}
+
+#ent-section-13 .title-wrap {
+	margin-bottom: 12px;
+}
+
+#ent-section-13 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-section-13 ul {
+
+}
+
+#ent-section-13 ul li {
+	width: 146px;
+	margin-bottom: 19px;
+}
+
+#ent-section-13 ul li img {
+	width: 100%;
+	height: 100%;
+	border: solid 1px #000;
+	margin-bottom: 9px;
+}
+
+#ent-section-13 ul li h4 {
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 18px;
+
+	margin-bottom: 5px;
+}
+
+#ent-section-13 ul li span {
+	font-size: 11px;
+	color: #898989;
+}
+
+
+
+
+/* 연예뉴스 섹션 14 */
+
+#ent-section-14 {
+	padding-top: 22px;
+}
+
+#ent-section-14 .title-wrap {
+	margin-bottom: 8px;
+}
+
+#ent-section-14 .title-wrap h3 {
+	font-size: 16px;
+}
+
+#ent-section-14 .title-wrap a {
+	font-size: 12px;
+	color: #999;
+}
+
+#ent-section-14 .heading {
+	margin-bottom: 8px;
+}
+
+#ent-section-14 .heading .heading-info {
+	width: 210px;
+}
+
+#ent-section-14 .heading .heading-info h4 {
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 18px;
+}
+
+#ent-section-14 .heading .heading-info .source {
+	font-size: 11px;
+	color: #999;
+}
+
+#ent-section-14 .heading img {
+	width: 70px;
+	height: 70px;
+	border: 1px solid #000;
+}
+
+#ent-section-14 ul {
+
+}
+
+#ent-section-14 ul li {
+	margin-bottom: 8px;
+}
+
+#ent-section-14 ul li a {
+	display: block;
+	width: 100%;
+	font-size: 12px;
+	color: #222;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#ent-section-14 ul li a:before {
+	display: inline-block;
+	content: "";
+	width: 2px;
+	height: 2px;
+
+	vertical-align: top;
+	background-color: silver;
+
+	margin: 5px 5px 0 0;
+}
+
+
+
+
+
+
+
+/* 네이버 게임 */
+
+.game-container {
+	width: 1280px;
+	margin: 0 auto;
+}
+
+.game-flex-between {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.game-flex-start {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.game-flex-end {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.game-flex-center {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.game-shadow {
+	box-shadow: 0 2px 30px 0 rgba(0 0 0 / 6%);
+}
+
+.game-p-30 {
+	padding: 30px;
+}
+
+.game-m-t-20 {
+	margin-top: 20px; 
+}
+
+.font-17 {
+	font-size: 17px;
+}
+
+.font-19 {
+	font-size: 19px;
+}
+
+.font-400 {
+	font-weight: 400;
+}
+
+.font-color-red {
+	color: red;
+}
+
+#game-body {
+	background-color: #f8f9fd;
+}
+
+
+
+
+/* 네이버 게임 헤더영역 */
+
+#game-header {
+	width: 100%;
+	background-color: #4e41db;
+}
+
+#game-header nav {
+	height: 60px;
+}
+
+#game-header nav .left {
+
+}
+
+#game-header nav .left h1 {
+	font-size: 20px;
+}
+
+#game-header nav .left h1 a {
+	color: #fff;
+}
+
+#game-header nav .left ul {
+
+}
+
+#game-header nav .left ul li {
+
+}
+
+#game-header nav .left ul li a {
+	color: gray;
+	font-size: 18px;
+}
+
+#game-header nav .left ul li a:before {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 14px;
+	border-radius: .5px;
+	background-color: #9da5b6;
+
+	margin: 0 12px;
+}
+
+#game-header nav .right {
+
+}
+
+#game-header nav .right .search-wrap {
+	width: 300px;
+	border-radius: 20px;
+	background-color: rgba(0, 0, 0, 0.28);
+
+	overflow: hidden;
+	/* 여기에서 overflow: hidden을 적용하지 않으면, border-radius가 적용되지 않는다. */
+	/* search-wrap 위에 input과 button 태그가 있기 때문. */
+}
+
+#game-header nav .right .search-wrap input {
+	width: calc(100% - 38px);
+	height: 38px;
+	padding: 10px 11px 9px 14px;
+	border: none;
+	background-color: transparent;
+
+	color: #fff;
+	font-size: 15px;
+}
+
+#game-header nav .right .search-wrap input::placeholder {  
+	color: lightgrey;
+}
+/* ::placeholder 선택자를 이용하여, input태그의 placeholder글자에 색상을 지정할 수 있다.! */
+
+
+
+#game-header nav .right .search-wrap input:focus {
+	outline: none;
+}
+
+#game-header nav .right .search-wrap .btn-search {
+	width: 38px;
+	height: 38px;
+	background-color: transparent;
+	border: none;
+
+}
+
+#game-header nav .right .ticket-wrap {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	margin-left: 10px;
+}
+
+#game-header nav .right .ticket-wrap .btn-ticket {
+	display: block;
+	width: 40px;
+	height: 40px;
+	border: solid 1px #fff;
+}
+
+#game-header nav .right .ticket-wrap .bubble-msg {
+	position: absolute;
+	width: 165px;
+	background-color: #697183;
+	border-radius: 8px;
+
+	padding: 10px 12px;
+	top: 50px;
+
+	left: 50%;
+	transform: translateX(-50%);
+	/* 포지션이 absolute인 경우에는 margin: 0 auto;로 x축 중앙정렬을 할 수 없다. */
+	/* left: 50%, transform: translate(-50%);로 x축 중앙정렬을 맞춰 준다. */
+
+	font-size: 12px;
+	color: #fff;
+	font-weight: 600;
+
+	z-index: 100;
+}
+
+#game-header nav .right .btn-login {
+	width: 60px;
+	border: solid 1px hsla(0, 0%, 80%, 0.3);
+	border-radius: 8px;
+
+	padding: 7px 0 6px;
+	margin-left: 10px;
+
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+}
+
+
+#game-header .game-events-wrap {
+	padding: 80px 0;
+}
+
+#game-header .game-events-wrap .event-wrap {
+	position: relative;
+	width: 407px;
+	height: 264px;
+	border-radius: 40px;
+
+	top: 0;
+	transition: top linear 0.3s;
+}
+
+#game-header .game-events-wrap .event-wrap:hover {
+	top: -20px;
+}
+
+#game-header .game-events-wrap .event-wrap.one {
+	background-color: rgb(112, 104, 236);
+}
+
+#game-header .game-events-wrap .event-wrap.two {
+	background-color: rgb(69, 39, 39);
+}
+
+#game-header .game-events-wrap .event-wrap.three {
+	background-color: rgb(112, 177, 181);
+}
+
+#game-header .game-events-wrap .event-wrap .event-title-wrap {
+	position: absolute;			
+
+	left: 30px;
+	bottom: 30px;
+
+	color: #fff;
+}
+
+#game-header .game-events-wrap .event-wrap .event-title-wrap span {
+	display: inline-block;  
+	/* display: block;으로 지정하면 width값을 지정해야 하지만, inline-block으로 지정하고 width값을 지정하지 않으면 width가 자동적용된다. */
+	border: solid 2px #fff;
+	border-radius: 10px;
+
+	padding: 3px 6px 3px;
+	margin-bottom: 15px;
+
+	font-size: 12px;
+	font-weight: 600;
+
+	text-align: center;
+}
+
+#game-header .game-events-wrap .event-wrap .event-title-wrap h2 {
+	font-size: 20px;
+}
+
+
+
+
+
+/* main */
+
+#game-main {
+	margin-top: 24px;
+}
+
+#game-main .game-container {
+	align-items: stretch;
+}
+
+
+
+
+/* main 왼쪽영역 */
+
+#game-main .left {
+	width: 900px;
+	/*height: 2000px;*/
+	/*background-color: yellow;*/
+	padding-bottom: 200px;
+}
+
+#game-main .left .left-banner {
+	/*width: 900px;*/ 
+	height: 120px;
+	border-radius: 12px;
+	/* 여기까지만 입력하면 border-radius가 적용되지 않는다. left-banner 안의 img가 들어가 있기 때문에 img는 border-radius가 적용되지 않은 상태이다.  */
+	/* overflow: hidden;으로 공간을 벗어난 부분을 보이지 않게 만들어 준다 */
+
+	overflow: hidden;
+
+	margin-bottom: 24px;
+}
+
+#game-main .left .left-banner a {
+	display: block;
+	/*width: 100%;*/
+	/*height: 100%;*/
+
+	/* width와 height값을 각 부모태그마다 설정을 하였는데, 100%로 입력한 부분은 주석처리를 해도 부모의 공간크기를 상속받는 것을 확인할 수 있었다. */
+}
+
+#game-main .left .left-banner img {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+/* game-section */
+
+.game-section {
+	position: relative;
+
+	background-color: #fff;
+	box-shadow: 0 2px 30px 0 rgb(0 0 0 / 6%);
+	border-radius: 12px;
+
+	padding: 27px 30px 40px;
+	margin-bottom: 24px;
+	/* btn-circle이 포함된 game-section에서는 margin-bottom을 39px로 설정할 것 */
+	/* game-section에서 margin-bottom을 39px로 설정하면 여기 설정된 24px과 겹쳐진다. */
+	/* 각 섹션의 id에서 margin-bottom: 39px;을 작성해야한다. */
+}
+
+.game-section .section-title-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.game-section .section-title-wrap h2 {
+	font-size: 19px;
+	font-weight: 400;
+}
+
+.game-section .section-middle-nav {
+	margin-bottom: 20px;
+}
+
+.game-section .section-middle-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+/*
+	border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+*/}
+
+.game-section .section-middle-nav li {
+
+}
+
+.game-section .section-middle-nav a {
+	display: block;
+	padding: 14px;	
+	border-bottom: solid 3px transparent;
+	color: #777;
+}
+
+.game-section .section-middle-nav a.active {
+	border-bottom: solid 3px #7776ff;
+	font-weight: 700;
+	color: #7776ff;
+}
+
+.game-section .section-body-wrap {
+	margin-bottom: 18px;
+}
+
+.game-section .section-body-wrap .image-txt-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.game-section .section-body-wrap .image-txt {
+	width: 407.5px;
+}
+
+.game-section .section-body-wrap img {
+	width: 180px;
+	height: 100px;
+	border-radius: 8px;
+	border: solid 1px rgba(0, 0, 0, 0.06);
+
+	margin-right: 15px;
+}		
+
+.game-section .section-body-wrap .txt {
+	width: 212px;
+}
+
+.game-section .section-body-wrap .title {
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 20px;
+
+	margin-bottom: 3px;
+}
+
+.game-section .section-body-wrap .source {
+	font-size: 13p;
+	color: #999;
+}
+
+.game-section .btn-circle {
+	position: absolute;
+	width: 55px;
+	height: 55px;
+	background-color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 2px 50px 0 rgb(0 0 0 / 6%);
+
+	bottom: -27.5px;
+
+	left: 50%;
+	transform: translateX(-50%);   
+	/* translateX(-50%)는 오브젝트의 현재 위치에서 오브젝트의 반 만큼 왼쪽으로 이동 */
+	/* translateY(50%)는 오브젝트의 현재 위치에서 오브젝트의 반 만큼 오른쪽으로 이동 */
+}
+
+.game-section .btn-circle.icon-arrow {
+	background-color: lightsalmon;
+}
+
+.game-section .btn-circle.icon-plus {
+	background-color: lightblue;
+}
+
+
+
+
+
+
+
+/* game-section-1 */
+
+#game-section-1 {
+	margin-bottom: 39px;
+}
+
+#game-section-1 .section-btn-wrap a {
+	font-size: 14px;
+	color: #9da5b6;
+	font-weight: 700;
+}
+
+#game-section-1 .section-btn-wrap a.active {
+	color: #7776ff;
+} 
+
+#game-section-1 .section-btn-wrap a:last-child {
+	margin-left: 14px;
+}
+
+
+#game-section-1 ol li {
+	padding: 10px 0;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.03);
+}
+
+#game-section-1 ol img { /* game-tumbnail, blog-thumbnail */
+	border-radius: 8px;
+}
+
+#game-section-1 ol .game-thumbnail {
+	margin-right: 10px;
+}
+
+#game-section-1 ol .txt-info {
+	width: 690px;
+	margin-right: 10px;
+}
+
+#game-section-1 ol .txt-info h3 {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 3px;
+}
+
+#game-section-1 ol .txt-info .source-wrap span {
+	font-size: 13px;
+	color: #858894;
+	margin-right: 5px;
+}
+
+#game-section-1 ol .txt-info .source-wrap .rank {
+	margin-right: 0;
+}
+
+
+
+
+
+
+/* game-section-2 */
+
+#game-section-2 {
+
+}
+
+#game-section-2 .section-title-wrap more {
+	font-size: 13px;
+	font-weigth: 400;
+}
+
+#game-section-2 .section-body-wrap {
+
+}
+
+#game-section-2 .section-body-wrap ul {
+	margin-top: 25px;
+}
+
+#game-section-2 .section-body-wrap li {
+	margin-bottom: 11px;
+}
+
+#game-section-2 .section-body-wrap li:last-child {
+	margin-bottom: none;
+}
+
+#game-section-2 .section-body-wrap a {
+
+}
+
+#game-section-2 .section-body-wrap ul .title {
+	width: 776px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+
+
+
+
+/* game-section-3 */
+
+#game-section-3 {
+	margin-bottom: 39px;
+}
+
+#game-section-3 .section-body-wrap .image-txt .category {
+	display: block;
+
+	font-size: 13px;
+	color: #7776ff;
+	margin-bottom: 3px;
+}
+
+
+
+
+
+
+/* game-section-4 */
+
+#game-section-4 ol {
+	align-items: flex-start;
+}
+
+#game-section-4 li {
+
+}
+
+#game-section-4 a {
+	display: block;
+}
+
+#game-section-4 .image-wrap {
+	position: relative;
+	overflow: hidden;
+	width: 263px;
+	height: 148px;
+	border-radius: 8px;
+}
+
+#game-section-4 .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#game-section-4 .image-wrap .icon-play {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background-color: grey;
+
+	left: 10px;
+	bottom: 12px;
+}
+
+#game-section-4 .image-wrap .time {
+	position: absolute;
+	background-color: rgba(0, 0, 0, .5);
+	border-radius: 6px;
+	padding: 2px 6px;
+
+	color: #fff;
+	font-size: 14px;
+
+	right: 10px;
+	bottom: 10px;
+}
+
+#game-section-4 .section-body-wrap .image-txt {
+	width: 100%;
+	margin-top: 10px;
+}
+
+#game-section-4 .image-txt h3 {
+	font-size: 15px;
+}
+
+#game-section-4 .image-txt .source,
+#game-section-4 .image-txt .count {
+	font-size: 13px;
+	color: #999;
+}
+
+
+
+
+
+
+/* game-section-5 */
+
+#game-section-5 {
+	margin-bottom: 39px;
+}
+
+#game-section-5 .section-title-wrap .info {
+	font-size: 13px;
+	color: #999;
+}
+
+#game-section-5 .section-body-wrap .image-wrap {
+	position: relative;
+	width: 190px;
+	height: 120px;
+}
+
+#game-section-5 .section-body-wrap .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: none;
+	margin-right: 0;
+}
+
+#game-section-5 .section-body-wrap .image-wrap .badge {
+	position: absolute;
+	display: inline-block;
+	color: #fff;
+	background-color: #4e41db;
+	font-size: 15px;
+	font-weight: 700;
+
+	padding: 4px 8px;
+	border-radius: 8px;
+
+	top: -5px;
+	left: -5px;
+}
+
+#game-section-5 .section-body-wrap .image-wrap .badge.open {
+	background-color: red;
+}
+
+#game-section-5 .section-body-wrap .txt-wrap {
+	margin-top: 12px;
+}
+
+#game-section-5 .section-body-wrap .txt-wrap h3 {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+#game-section-5 .section-body-wrap .txt-wrap p {
+	font-size: 13px;
+	font-weight: 500;
+
+}
+
+#game-section-5 .section-body-wrap .txt-wrap span {
+	font-size: 13px;
+	color: grey;
+}
+
+
+
+
+
+/* game-section-6 */
+
+#game-section-6 .section-body-wrap img {
+	width: 80px;
+	height: 80px;
+	border-radius: 30px;
+}
+
+#game-section-6 .section-body-wrap .category {
+	font-size: 15px;
+}
+
+#game-section-6 .section-body-wrap .txt {
+	width: 300px;
+}
+
+#game-section-6 .section-body-wrap .title {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	font-size: 13px;
+	color: #666;
+}
+
+
+
+
+
+
+
+/* main 오른쪽영역 */
+
+#game-main .right {
+	width: 358px;
+	/*height: 2000px;*/
+	/*background-color: lightpink;*/
+} 
+
+
+
+/* right-section */
+
+.right-section {
+	background-color: #fff;
+	box-shadow: 0 2px 30px 0 rgb(0 0 0 / 6%);
+	border-radius: 12px;
+
+	padding: 30px;
+	margin-bottom: 24px;
+}
+
+.right-section .title-wrap {
+
+}
+
+.right-section .title-wrap h2 {
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.right-section .title-wrap a {
+	font-size: 13px;
+	font-weight: 400;
+	color: #444;
+}
+
+.right-section .right-section-body {
+	margin-top: 20px;
+}
+
+
+
+
+
+/* visitor-section */
+
+#visitor-section .text-wrap p {
+	font-size: 13px;
+	color: #9da5b6;
+	text-align: center;	
+}
+
+#visitor-section .text-wrap .input-wrap {
+	position: relative;
+	width: 250px;
+	height: 44px;
+	background-color: #f5f6fa;
+	border-radius: 12px;
+
+	margin-top: 18px;
+
+	overflow: hidden;
+}
+
+#visitor-section .text-wrap .input-wrap input {
+	width: calc(100% - 44px);
+	height: 100%;
+	padding: 10px 16px;
+	border: none;
+	background-color: transparent;
+
+	font-size: 15px;
+
+}
+
+#visitor-section .text-wrap .input-wrap input:focus {
+	outline: none;
+}
+
+#visitor-section .text-wrap .input-wrap button {
+	width: 44px;
+	height: 100%;
+	background-color: dodgerblue;
+}
+
+
+
+
+
+/* popular-section */
+
+.rank-section .right-section-body ol {
+
+}
+
+.rank-section .right-section-body li {
+	margin-bottom: 16px;
+}
+
+.rank-section .right-section-body li:after {
+	content: '';
+	width: 14px;
+	height: 14px;
+	background-color: grey;
+}
+
+.rank-section .right-section-body li:last-child {
+	margin-bottom: 0;
+}
+
+.rank-section .right-section-body li .count-wrap {
+	position: relative;
+	width: 25px;
+	text-align: center;
+
+	margin-right: 5px;
+}
+
+.rank-section .right-section-body .count-wrap .count {
+	font-size: 17px;
+	font-weight: 700;
+}
+
+.rank-section .right-section-body .count-wrap .count.red {
+	color: #ff4c51;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap {
+	position: absolute;
+	left: 6px;
+	bottom: -13px;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap .equal {
+	display: inline-block;
+	width: 5px;
+	height: 3px;
+	background-color: lightslategrey;
+	margin-left: 3px;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap .up {
+	color: red;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap .down {
+	color: blue;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap .down:before {
+	background-color: blue;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap span {
+	font-size: 10px;
+}
+
+.rank-section .right-section-body .count-wrap .up-and-down-wrap span:before {
+	content: '';
+	display: inline-block;
+	position: relative;
+	width: 7px;
+	height: 3px;
+	background-color: red;
+	top: -2px;
+	margin-right: 1px;
+}
+
+.rank-section .right-section-body .image-wrap {
+	position: relative;
+	/*overflow: hidden;*/
+	width: 55px;
+	height: 55px;
+	/*border-radius: 12px;*/
+
+	margin-right: 5px;
+}
+/* overflow: hidden;을 image-wrap에 적용시켜서 border-radius를 적용시키면, chk의 동그란 오브젝트도 함께 image-wrap의 크기만큼 잘려서 나오게 된다. */
+/* img에 직접 overflow: hidden;과 boredr-raidus: 12px;을 적용시키는 것이 좋다. */
+
+.rank-section .right-section-body .image-wrap img {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+}
+
+.rank-section .right-section-body .image-wrap .chk {
+	position: absolute;
+	width: 21px;
+	height: 21px;
+	background-color: grey;
+	border-radius: 50%;
+
+	top: -2px;
+	right: -2px;
+}
+
+.rank-section .right-section-body .txt-wrap {
+
+} 
+
+.rank-section .right-section-body .txt-wrap h3 {
+	width: 182px;
+	font-size: 15px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	margin-right: 10px;
+}
+
+.rank-section .right-section-body .txt-wrap .genre {
+	font-size: 13px;
+	color: #999;
+}
+
+.rank-section .right-section-body .time {
+	margin-top: 12px;
+	font-size: 13px;
+	color: #999;
+}
+
+
+
+
+
+/* news-section */
+
+#news-section .right-section-body ul {
+
+}
+
+#news-section .right-section-body ul li {
+	margin-bottom: 5px;
+}
+
+#news-section .right-section-body ul li:last-child {
+	margin-bottom: 0;
+}
+
+#news-section .right-section-body ul li a {
+	display: block;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#news-section .right-section-body ul li a:before {
+	content: '';
+	position: relative;
+	display: inline-block;
+	width: 3px;
+	height: 3px;
+	background-color: #9da5b6;
+
+	top: -5px;
+	margin-right: 5px;
+}
+
+
+
+
+
+
+/* week-section */
+
+#week-section li {
+	margin-bottom: 16px;
+}
+
+#week-section li:last-child {
+	margin-bottom: 16px;
+}
+
+#week-section img {
+	width: 128px;
+	height: 74px;
+	border-radius: 8px;
+
+	margin-right: 10px;
+}
+
+#week-section .txt-wrap h3 {
+	font-size: 15px;
+}
+
+#week-section .txt-wrap img {
+	font-size: 13px;
+	color: #999;
+}
+
+
+
+
+
+/* game-footer-section */
+
+#game-footer-section {
+
+}
+
+#game-footer-section a {
+	display: inline-block;
+	font-size: 12px;
+	color: #666;
+}
+
+#game-footer-section a:after {
+	content: '';
+	display: inline-block;
+	width: 1px;
+	height: 11px;
+	margin: 1px 10px 0;
+	background-color: #ddd;
+	vertical-align: top;
+}
+
+
+
+
+
+
+
+/* e-sports */
+
+.esports-container {
+	width: 1280px;
+	margin: 0 auto;
+}
+
+
+
+
+/* esports-header */
+
+#esports-header {
+	position: fixed;
+	width: 100%;
+	background-color: #151618;
+	border-bottom: solid 1px grey;
+
+	left: 0;
+	top: 0;
+
+	z-index: 999999;
+}
+
+#esports-header #esports-nav {
+	/*height: 60px;*/
+	/* nav-wrap(자식태그)에서 지정한 높이값이 부모에게 영향을 준다. */
+}
+
+#esports-header #esports-nav a {
+	color: #fff;
+}
+
+#esports-header #esports-nav .nav-wrap {
+	height: 60px;	
+}
+
+#esports-header #esports-nav .left h1 {
+	font-size: 20px;
+}
+
+#esports-header #esports-nav .left li {
+
+}
+
+#esports-header #esports-nav .left li:before {
+	display: inline-block;
+	content: '';
+	width: 1px;
+	height: 14px;
+	background-color: rgba(160, 165, 182, .3);
+	margin: 0 12px;
+} 
+
+#esports-header #esports-nav .left li a {
+	color: grey;
+}
+
+#esports-header #esports-nav .center li {
+	margin-right: 24px;
+}
+
+#esports-header #esports-nav .center li:last-child {
+	margin-right: 0;
+}
+
+#esports-header #esports-nav .center li a {
+	display: inline-block;
+	height: 60px;
+
+	line-height: 60px;
+	border-bottom: solid 5px transparent;
+
+	color: grey;
+	font-size: 17px;
+}
+
+#esports-header #esports-nav .center li a.active {
+	color: #fff;
+	border-bottom: 5px solid #fff;
+}
+
+#esports-header #esports-nav .center li a:hover {
+	color: darkgray;
+}
+
+#esports-header #esports-nav .right a {
+	border: solid 1px hsla(0, 0%, 80%, .3);
+	border-radius: 8px;
+
+	padding: 4px 8px ;
+
+	font-size: 12px;
+}
+
+#esports-header #esports-nav .right a:last-child {
+	margin-left: 10px;
+}
+
+
+
+
+
+
+
+/* esports-main */
+
+
+#esports-main {
+	margin-top: 61px;
+	/* header부분이 position: fixed;(3차원)으로 지정되어 있기 때문에 다음에 나오는 형제가 2차원 속성을 갖고 있다면 레이어 겹침 현상이 생긴다. */
+	/* header의 높이값 만큼 margin-top아나 padding-top을 지정해 준다. */
+}
+
+#esports-main-top {
+	background-color: #151618;
+	margin-bottom: 30px;
+}
+
+
+
+
+
+
+/* timeline-wrap */
+
+#esports-main-top .timeline-wrap {
+	padding: 20px 0;
+}
+
+#esports-main-top .timeline-wrap ul {
+
+}
+
+#esports-main-top .timeline-wrap ul li {
+	width: 16.6%;
+	background-color: #272b31;
+	border-radius: 10px;
+	margin-right: 1px;
+}
+
+#esports-main-top .timeline-wrap ul li:last-child {
+	margin-right: 0;
+}
+
+#esports-main-top .timeline-wrap ul li a {
+	display: block;
+	width: 100%;
+	padding: 14px 18px;
+
+	color: #fff;
+}
+
+#esports-main-top .timeline-wrap ul a span {
+
+}
+
+#esports-main-top .timeline-wrap ul a .date {
+	font-size: 12px;
+	font-weight: 500;
+}
+
+#esports-main-top .timeline-wrap ul a h2 {
+	font-size: 14px;
+	margin-top: 6px;
+	color: #a0a5b6;
+}
+
+#esports-main-top .timeline-wrap ul .status-wrap {
+	margin-top: 35px;
+}
+
+#esports-main-top .timeline-wrap ul .status-wrap .live {
+	font-size: 12px;
+	font-weight: 700;
+}
+
+#esports-main-top .timeline-wrap ul .status-wrap .status {
+	font-size: 12px;
+	font-weight: 500;
+	color: red;
+}
+
+
+
+
+
+
+/* live-wrap */
+
+#esports-main-top .live-wrap {
+	padding-bottom: 60px;
+}
+
+#esports-main-top .live-wrap h2 {
+	font-size: 18px;
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+#esports-main-top .live-wrap h2 .count {
+ 	color: #8a7cff;
+}
+
+#esports-main-top .live-wrap ul {
+
+}
+
+#esports-main-top .live-wrap ul li {
+	overflow: hidden;
+	width: 625px;
+	background-color: #1f2227;
+	border-radius: 10px;
+}
+
+#esports-main-top .live-wrap ul li a {
+	/*display: block;*/  /* inline요소여야지 img태그와 txt-wrap이 flex로 x축 정렬이 될 수 있기 때문. 굳이 inline-block까지도 필요하지 않기에 그냥 주석처리함 */
+	/*width: 100%;*/
+	/*height: 100%;*/
+	align-items: flex-start;
+}
+
+#esports-main-top .live-wrap ul a img {
+	width: 442px;
+	height: 250px;
+}
+
+#esports-main-top .live-wrap ul a .txt-wrap {
+	width: calc(100% - 442px);
+	padding: 17px 20px 22px;
+}
+
+#esports-main-top .live-wrap ul a .txt-wrap span {
+	color: red;
+	background-color: rgba(255, 0, 0, 0.2);
+	padding: 3px 7px;
+	border-radius: 3px;
+}
+
+#esports-main-top .live-wrap ul a .txt-wrap h3 {
+	font-size: 15px;
+	color: #fff;
+	margin-top: 8px;
+}
+
+
+
+
+
+
+
+/* content wrap */
+
+#esports-main .content-wrap {
+	overflow: hidden;
+}
+
+
+
+/* esports-main .left */
+
+#esports-main .left {
+	float: left;
+	width: 900px;
+	/*height: 2000xp;*/
+	/*background-color: yellow;*/
+}
+
+
+
+
+/* esports-main-article */
+
+
+#esports-main-article {
+	overflow: hidden;
+	width: 100%;
+	height: 468px;
+	background-color: grey;
+	border-radius: 10px;
+
+	margin-bottom: 30px;
+}
+
+#esports-main-article .article {
+	position: relative;
+	float: left;     /* float: left;를 하면, 왼쪽부터 차례로 x축 배치가 된다. 부모영역을 벗어나는 크기는 자동으로 줄바꿈 되는 것을 활용하여 배치 */
+	width: 50%;
+	height: 50%;
+}
+
+#esports-main-article .article.full {
+	height: 100%;   
+}
+
+
+#esports-main-article .article img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#esports-main-article .article .txt-wrap {
+	position: absolute;
+	width: 100%;
+	padding: 0 24px 20px;
+
+	left: 0;
+	bottom: 0;
+
+	color: #ffffff;
+}
+
+
+#esports-main-article .article .txt-wrap h3 {
+	font-size: 20px;
+	line-height: 26px;
+	font-weight: 700;
+}
+
+#esports-main-article .article .txt-wrap p {
+	margin-top: 5px;
+
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 19px;
+}
+
+#esports-main-article .article .txt-wrap .source {
+	display: block;
+	margin-top: 10px;
+
+	font-size: 13px;
+	color: hsla(0, 0, 100%, .7);
+}
+
+
+
+
+.esports-section {
+	border-top: solid 1px grey;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+}
+
+.esports-section .title-wrap {
+	padding: 15px 0;
+}
+
+.esports-section .title-wrap h2 {
+	font-size: 18px;
+}
+
+
+
+
+
+#esports-replay .game-menu {
+	margin-bottom: 24px;
+}
+
+
+#esports-replay .game-menu ul {
+	
+}
+
+#esports-replay .game-menu ul li {
+	margin-right: 20px;
+}
+
+#esports-replay .game-menu ul li:last-child {
+	margin-right: 0;
+}
+
+#esports-replay .game-menu ul li a {
+	display: block;
+	width: 60px;
+	/*height: 82px;*/
+
+	text-align: center;
+}
+
+#esports-replay .game-menu ul li a.active i {
+	background-color: purple;
+}
+
+#esports-replay .game-menu ul li a.active span{
+	color: purple;
+}
+
+#esports-replay .game-menu ul li i {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background-color: grey;
+	border-radius: 50%;
+
+	margin-bottom: 6px;
+}
+
+#esports-replay .game-menu ul li span{
+	font-size: 13px;
+}
+
+
+#esports-replay .play-lists {
+
+}
+
+#esports-replay .play-lists li {
+	width: 285px;
+	margin-bottom: 24px;
+}
+
+#esports-replay .play-lists li:nth-child(4),
+#esports-replay .play-lists li:nth-child(5),
+#esports-replay .play-lists li:nth-child(6) {
+	margin-bottom: 0;
+}
+
+#esports-replay .play-lists li a {
+	display: block;
+}
+
+#esports-replay .play-lists li .image-wrap {
+	position: relative;
+	width: 100%;
+	height: 160px;
+	margin-bottom: 11px;
+
+	overflow: hidden;
+	border-radius: 6px;
+}
+
+#esports-replay .play-lists li .image-wrap img {
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+}
+
+#esports-replay .play-lists li .image-wrap .status-wrap {
+	position: absolute;
+	width: 100%;
+
+	left: 0;
+	bottom: 0;
+
+	padding: 10px;
+}
+
+#esports-replay .play-lists li .image-wrap .status-wrap i {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: grey;
+}
+
+#esports-replay .play-lists li .image-wrap .status-wrap .time {
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 3px 5px;
+	border-radius: 3px;
+
+	font-size: 11px;
+	color: #ffffff;
+}
+
+#esports-replay .play-lists li .image-wrap .status-wrap i {
+	
+}
+
+#esports-replay .play-lists li h3 {
+	font-size: 15px;
+}
+
+
+
+
+
+
+
+/* esports-news */
+
+#esports-news {
+
+}
+
+#esports-news .article-wrap {
+	align-items: flex-start;
+}
+
+
+#esports-news .article-wrap .left-lists {
+	width: 472px;
+}
+
+#esports-news .article-wrap .left-lists li {
+	width: 226px;
+}
+
+#esports-news .article-wrap .left-lists li a {
+	display: block;
+}
+
+#esports-news .article-wrap .left-lists img {
+	width: 100%;
+	height: 132px;
+	margin-bottom: 9px;
+}
+
+#esports-news .article-wrap .left-lists h3 {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 21px;
+}
+
+#esports-news .article-wrap .left-lists p {
+	font-size: 14px;
+	color: #777;
+
+	display: -webkit-box;
+	overflow: hidden;
+	max-height: 132px;
+    -webkit-line-clamp: 2;    /*line-clamp만 설정해도 말줄임표가 생성됨*/
+    -webkit-box-orient: vertical;
+    /*text-overflow: ellipsis; */    /* line-clamp에서 이미 말줄임표가 생성되어 있기 때문에 다시 넣지 않아도 된다. */
+
+}
+
+#esports-news .article-wrap .right-lists {
+	width: 400px;
+}
+
+#esports-news .article-wrap .right-lists li {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+#esports-news .article-wrap .right-lists li:before {
+	position: absolute;
+	display: inline-block;
+	content: '';
+	width: 4px;
+	height: 4px;
+	background-color: grey;
+	border-radius: 50%;
+
+	top: 6px;
+}
+
+#esports-news .article-wrap .right-lists li a {
+	display: block;
+	font-size: 16px;
+	padding-left: 15px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+
+
+
+
+/* esports-expert */
+
+#esports-expert .news-lists {
+
+}
+
+#esports-expert .news-lists li {
+	width: 450px;
+	margin-bottom: 15px;
+} 
+
+#esports-expert .news-lists li a {
+	 
+}
+
+#esports-expert .news-lists li img {
+	width: 153px;
+	height: 86px;
+	margin-right: 15px;
+}
+
+#esports-expert .news-lists .txt-wrap {
+	width: 268px;
+}
+
+#esports-expert .news-lists .txt-wrap h3 {
+	font-size: 15px;
+	font-weight: 500;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#esports-expert .news-lists .txt-wrap p {
+	font-size: 14px;
+	color: #777777;
+	line-height: 19px;
+	margin-top: 4px;
+	letter-spacing: -2px;
+
+	display: -webkit-box;
+	overflow: hidden;
+	max-height: 38px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* 2번째 줄 이후부터 표시하지 않고 말줄임표 */
+}
+
+#esports-expert .news-lists .txt-wrap .source{
+	font-size: 13px;
+	color: #777777;
+	line-height: 15px;
+}
+
+
+
+
+
+
+
+
+
+/* #esports-main .right */
+
+#esports-main .right {
+	float: right;
+	width: 357px;
+	/*height: 2000xp;*/
+	/*background-color: gray;*/
+}
+
+
+
+
+
+/* esports-news-view */
+
+#esports-news-view {
+	padding: 20px;
+	border: solid 1px grey;
+	border-radius: 10px;
+
+	margin-bottom: 30px;
+}
+
+#esports-news-view h2 {
+	font-size: 18px;
+}
+
+#esports-news-view ol {
+	margin-top: 20px;
+}
+
+#esports-news-view li {
+	margin-bottom: 8px;
+}
+
+#esports-news-view li:last-child {
+	margin-bottom: 0;
+}
+
+#esports-news-view li a {
+	/*display: block;*/
+}
+
+#esports-news-view li .image-wrap {
+	overflow: hidden;
+	position: relative;
+	width: 84px;
+	height: 48px;
+	border: solid 1px rgba(0, 0, 0, .04);
+	border-radius: 4px;
+}
+
+#esports-news-view li .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#esports-news-view li .image-wrap .rank {
+	position: absolute;
+	background-color: #4e41db;
+	border-bottom-right-radius: 4px;
+
+	padding: 4px 10px;
+
+	top: 0;
+	left: 0;
+
+	font-size: 13px;
+	color: #fff;
+	font-weight: 800;
+}
+
+#esports-news-view li h3 {
+	display: -webkit-box;
+	overflow: hidden;
+
+	width: 218px;
+	max-height: 38px;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+
+
+	font-size: 14px;
+	line-height: 19px;
+}
+
+
+
+
+
+
+
+/* esports-schedule */
+
+
+#esports-schedule {
+
+}
+
+#esports-schedule h2 {
+	font-size: 18px;
+}
+
+#esports-schedule .schedule-wrap {
+	margin-top: 15px;
+	border: solid 1px grey;
+	border-radius: 4px;
+}	
+
+#esports-schedule .schedule-wrap .schedule-header {
+	padding: 14px 15px;
+	border-bottom: solid 1px grey;
+}
+
+#esports-schedule .schedule-wrap .schedule-header .arrow {
+	width: 20px;	
+	height: 20px;
+}
+
+#esports-schedule .schedule-wrap .schedule-header .arrow.arrow-left {
+	background-color: yellow;
+}
+
+#esports-schedule .schedule-wrap .schedule-header .arrow.arrow-right {
+	background-color: greenyellow;
+}
+
+#esports-schedule .schedule-wrap .schedule-header span {
+	position: relative;
+
+	font-size: 18px;
+	font-weight: 800;
+
+	top: 3px;
+}
+
+
+#esports-schedule .schedule-body {
+	padding: 17px 0;
+}
+
+#esports-schedule .schedule-body li {
+	/*padding: 17px 0;*/
+}
+
+#esports-schedule .schedule-body li:first-child:after {
+	content: "";
+	display: block;
+	width: calc(100% - 40px);
+	height: 1px;
+	background-color: rgba(0, 0, 0, .05);
+
+	margin: 17px auto;
+}
+
+
+#esports-schedule .schedule-body li h3 {
+	font-size: 14px;
+	margin-bottom: 12px;
+	text-align: center;
+}
+
+#esports-schedule .schedule-body li .status-wrap {
+
+}
+
+#esports-schedule .schedule-body li .status-wrap:hover {
+	cursor: pointer;
+	background-color: yellow;
+}
+
+
+#esports-schedule .schedule-body li .status-wrap .status{
+	background-color: rgba(255, 0, 0, .1);
+	color: red;
+	font-weight: 500;
+	font-size: 11px;
+	border-radius: 3px;
+
+	margin-right: 4.5px;
+
+	padding: 2px 4px;
+}
+
+#esports-schedule .schedule-body li .status-wrap .time{
+	position: relative;
+
+	top: 1px;
+
+	font-size: 15px;
+	font-weight: 700;
+}
+
+
+
+
+
+
+/* 오디오 클립  */
+
+.audio-container {
+	width: 1080px;
+	margin: 0 auto;
+}
+
+.audio-flex-start {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+}
+
+.audio-flex-between {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+
+}
+
+.audio-flex-center {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+.audio-flex-end {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: stretch;
+}
+
+
+
+
+
+
+/* audio-header */
+
+#audio-header {
+	position: fixed;
+	width: 100%;
+	background-color: #ffffff;
+	border-bottom: solid 1px #efeff4;
+
+	left: 0;
+	top: 0;
+
+	z-index: 99999;
+}
+
+
+#audio-header .audio-nav-left {
+	width: 660px;
+}
+
+#audio-header .audio-nav-left .audio-logo {
+	font-size: 25px;
+}
+
+#audio-header .audio-nav-left .audio-logo a {
+
+}
+
+#audio-header .audio-nav-left ul {
+	padding-top: 10px;
+}
+
+#audio-header .audio-nav-left li {
+
+}
+
+#audio-header .audio-nav-left li a {
+	display: block;
+	font-size: 17px;
+	padding: 12px 13px 17px 12px;
+}
+
+#audio-header .audio-nav-left li a.active {
+	font-weight: 700;
+}
+
+#audio-header .audio-nav-left li a span {
+	position: relative;
+	display: inline-block;
+	height: 21px;
+}
+
+#audio-header .audio-nav-left li a.active span:after {
+	display: block;
+	position: absolute;
+	content: "";
+	border-bottom: solid 3px #222222;
+	border-radius: 1.5px;
+
+	z-index: 1;
+
+	/* 여기까지만 입력한다면 아무것도 나타나지 않음 */
+
+	left: -4.5px;
+	right: -5.5px;
+	/* left, right를 입력하면 원래 span태그공간 17px에서 4.5px + 5.5px = 10px을 양 옆으로 늘려서, border-bottom이 27px로 나타나게 된다.  */
+	bottom: -17px;
+	/* bottom으로 공간이 늘어나지 않는 이유는, border-bottom의 굵기를 3px로 지정했기 때문 */
+}
+
+
+
+
+
+#audio-header .audio-nav-right {
+	width: 330px;
+}
+
+#audio-header .audio-nav-right .search-wrap {
+	width: 180px;
+	height: 40px;
+	background-color: #ffffff;
+	border: solid 2px rgba(0, 86, 201, .2);
+	border-radius: 4px;
+}
+
+#audio-header .audio-nav-right .search-wrap .icon-search {
+	width: 40px;
+	height: 100%;
+	background-color: yellow;
+}
+
+#audio-header .audio-nav-right .search-wrap input {
+	width: calc(100% - 40px);
+	height: 100%;
+
+	padding: 8px 15px;
+	font-size: 15px;
+
+	outline: none;
+	border: none;
+}
+
+#audio-header .audio-nav-right .search-wrap input:focus {
+	outline: none;
+}
+
+
+
+#audio-header .audio-nav-right .profile-wrap {
+
+}
+
+#audio-header .audio-nav-right .profile-wrap .profile-img {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+}
+
+#audio-header .audio-nav-right .profile-wrap .btn-login {
+	font-size: 15px;
+	padding-left: 8px;
+}
+
+
+
+
+
+
+
+/* audio-main */
+
+#audio-main {
+	width: 100%;
+	background-color: #f6f8fa;
+
+	padding-top: 61px;
+}
+
+#audio-main .audio-container {
+	/*overflow: hidden;*/
+	align-items: flex-start;
+}
+
+#audio-main .audio-main-left {
+	/*float: left;*/
+	width: 660px;
+}
+
+
+#audio-main .audio-main-right {
+	/*float: right;*/
+	width: 330px;
+}
+
+
+
+
+
+
+
+/* 각 섹션별 공통 디자인  */
+.audio-section {
+	padding: 32px 0;
+}
+
+.audio-section .audio-header {
+	
+}
+
+.audio-section .audio-header h2 {
+	font-size: 22px;
+	font-weight: 500;
+	letter-spacing: -.8px;
+}
+
+.audio-section .audio-body {
+	position: relative;
+	padding-top: 19px;
+}
+
+.audio-section .audio-body .btn-right {
+	position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color: yellow;
+    border-radius: 50%;
+	right: -17px;
+}
+
+
+
+
+/*  오늘의 오디오 클립  */
+#audio-today .audio-slide {
+	align-items: flex-start;
+}
+
+#audio-today .audio-slide img {
+	width: 380px;
+	height: 198px;
+}
+
+#audio-today .audio-slide .txt-wrap h3 {
+	font-size: 18px;
+	padding-top: 2px;
+}
+
+#audio-today .audio-slide .txt-wrap p {
+	margin-top: 12px;
+}
+
+
+#audio-today .audio-slide-wrap {
+	position: relative;
+}
+
+#audio-today .audio-slide-wrap .btn {
+	position: absolute;
+
+	width: 35px;
+	height: 35px;
+	background-color: yellow;
+	border-radius: 50%;
+
+	top: 80px;
+}
+
+
+#audio-today .audio-slide-wrap .btn-left {
+	left: -17px;
+}
+
+#audio-today .audio-slide-wrap .btn-right {
+	right: -17px;
+}
+
+
+
+
+#audio-original {
+
+}
+
+#audio-original .audio-body {
+
+}
+
+#audio-original .audio-body ul {
+	align-items: flex-start;
+}
+
+#audio-original .audio-body ul li {
+	width: 120px;
+}
+
+#audio-original .audio-body li a {
+
+}
+
+#audio-original .audio-body li img {
+	border-radius: 10px;
+}
+
+#audio-original .audio-body h3 {
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+#audio-original .audio-body .author {
+	font-size: 12px;
+	margin-top: 6px;
+
+	color: #959595;
+}
+
+
+#audio-original .audio-body .btn-right {
+	top: 60px;
+}
+
+
+
+
+#audio-playlist {
+
+}
+
+#audio-playlist .audio-header {
+	position: relative;
+}
+
+#audio-playlist .audio-header h2 {
+
+}
+
+#audio-playlist .audio-header p {
+	font-size: 13px;
+	margin-top: 8px;
+	color: #888888;
+	font-weight: 400;
+}
+
+#audio-playlist .audio-header .link-total {
+	display: block;
+	position: absolute;
+
+	padding: 10px 18px 8px;
+	background-color: #ffffff;
+	font-size: 13px;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	box-shadow: 0 2px 10px 0 rgb(80 85 91 / 7%);
+
+	color: #157efb;
+
+	right: 0;
+	top: 6px;
+}
+
+#audio-playlist .audio-body {
+
+}
+
+#audio-playlist .audio-body ul {
+	align-items: flex-start;
+}
+
+#audio-playlist .audio-body li  {
+	width: 152px;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+}
+
+#audio-playlist .audio-body li .image-wrap {
+	position: relative;
+	width: 150px;
+	height: 150px;
+}
+
+#audio-playlist .audio-body li .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#audio-playlist .audio-body li .image-wrap .icon-play {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	background-color: yellow;
+	border-radius: 50%;
+
+	bottom: -16px;
+    right: 10px;
+}
+
+#audio-playlist .audio-body li h3 {
+	background-color: #ffffff;
+	padding: 17px 11px;
+	font-size: 13px;
+}
+
+#audio-playlist .audio-body .btn-right {
+	top: 90px;
+}
+
+
+
+
+
+#audio-live {
+
+}
+
+#audio-live .audio-body {
+
+}
+
+#audio-live .audio-body ul {
+	align-items: flex-start;
+}
+
+#audio-live .audio-body li {
+	width: 120px;
+}
+
+#audio-live .audio-body li .image-wrap {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	border: solid 2px grey;
+	border-radius: 50%;
+}
+
+#audio-live .audio-body li .image-wrap img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: solid 2px #ffffff;
+	border-radius: 50%;	
+}
+
+#audio-live .audio-body li .image-wrap .live-state {
+	position: absolute;
+
+	padding: 2px;
+	border: solid 2px #ffffff;
+	border-radius: 3px;
+	background-color: #ffffff;
+
+	bottom: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#audio-live .audio-body li .image-wrap .live-state .live {
+	display: block;
+	padding: 4px 8px;
+	color: red;
+	border: solid 2px red;
+	border-radius: 3px;
+	background-color: #ffffff;
+
+	font-size: 10px;
+}
+
+#audio-live .audio-body li.active .image-wrap .live-state .live {
+	border: solid 2px red;
+	background-color: red;
+
+	color: #ffffff;
+}
+
+#audio-live .audio-body li h3 {
+	margin-top: 16px;
+	font-size: 13px;
+}
+
+#audio-live .audio-body li .author {
+	margin-top: 6px;
+	font-size: 12px;
+	color: #959595;
+}
+
+
+
+
+
+#audio-book {
+
+}
+
+#audio-book .audio-body {
+	
+}
+
+#audio-book .audio-body ul {
+	align-items: flex-start;
+}
+
+#audio-book .audio-body li {
+	width: 120px;
+}
+
+#audio-book .audio-body .image-wrap {
+	position: relative;
+	width: 100%;
+}
+
+#audio-book .audio-body .image-wrap img {
+	/*position: absolute;*/
+	width: 100%;
+}
+
+#audio-book .audio-body .image-wrap .time{
+	position: absolute;
+
+	padding: 2px 5px 0;
+	background-color: rgba(17, 17, 17, .75);
+
+	font-size: 11px;
+	color: #ffffff;
+
+	right: 5px;
+	bottom: 5px;
+}
+
+#audio-book .audio-body li h3 {
+	font-size: 13px;
+	margin-top: 11px;
+}
+
+#audio-book .audio-body li .author-1 {
+	display: block;
+	font-size: 12px;
+	margin-top: 4px;
+
+	color: #959595;
+}
+
+#audio-book .audio-body li .author-2 {
+	display: block;
+	font-size: 12px;	
+	color: #959595;
+}
+
+#audio-book .audio-body li .price {
+	display: block;
+	font-size: 12px;
+	margin-top: 4px;
+	font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#audio-channel {
+
+}
+
+
+#audio-channel .audio-body {
+	
+}
+
+#audio-channel .audio-body ul {
+	align-items: flex-start;
+}
+
+#audio-channel .audio-body li {
+	width: 120px;
+}
+
+#audio-channel .audio-body li img {
+	width: 120px;
+	height: 120px;
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+
+#audio-channel .audio-body li h3 {
+	font-size: 13px;
+    margin-top: 10px;
+}
+
+#audio-channel .audio-body li .author {
+	font-size: 12px;
+    margin-top: 6px;
+    color: #959595;
+}
+
+
+
+
+
+#audio-intro {
+
+}
+
+
+#audio-intro .audio-body ul {
+
+}
+
+#audio-intro .audio-body li {
+
+}
+
+#audio-intro .audio-body li a {
+
+}
+
+#audio-intro .audio-body li img {
+	width: 152px;
+	height: 152px;
+	border-radius: 4px;
+}
+
+#audio-intro .audio-body li h3 {
+	margin-top: 12px;
+	font-size: 13px;
+
+}
+
+#audio-intro .audio-body li .soruce {
+	margin-top: 4px;
+	font-size: 12px;
+	color: #959595;
+}
+
+
+
+
+
+
+
+
+
+#audio-discovery {
+
+}
+
+#audio-discovery .audio-header {
+	position: relative;
+}
+
+#audio-discovery .audio-header h2 {
+	font-size: 17px;
+	line-height: 24px;
+}
+
+#audio-discovery .audio-header p {
+	margin-top: 7px;
+	font-size: 13px;
+	color: #888;
+}
+
+#audio-discovery .audio-header .link-setting{
+	display: block;
+    position: absolute;
+    padding: 10px 18px 8px;
+    background-color: #ffffff;
+    font-size: 13px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px 0 rgb(80 85 91 / 7%);
+    color: #157efb;
+    right: 0;
+    top: 6px;
+}
+
+
+#audio-discovery .audio-body ul {
+
+}
+
+#audio-discovery .audio-body li {
+	margin-bottom: 40px;
+}
+
+
+#audio-discovery .audio-body li a {
+
+}
+
+#audio-discovery .audio-body li img {
+	width: 152px;
+	height: 152px;
+	border-radius: 4px;
+}
+
+#audio-discovery .audio-body li h3 {
+	margin-top: 12px;
+	font-size: 13px;
+
+}
+
+#audio-discovery .audio-body .btn-more {
+	display: block;
+	margin: 0 auto;
+
+
+	font-size: 14px;
+	color: #222;
+
+	padding: 12px 21px 12px 21px;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	border-radius: 24px;
+	background-color: #ffffff;
+	box-shadow: 0 2px 10px 0 rgb(80 85 91 / 7%);
+
+	font-weight: 500;
+}
+
+#audio-discovery .audio-body .btn-more .color-blue {
+	color: #157efb;
+}
+
+#audio-discovery .audio-body .btn-more .pages{
+	color: #959595;
+}
+
+
+
+
+
+
+
+
+
+#audio-create {
+
+}
+
+#audio-create .audio-body {
+	
+}
+
+#audio-create .audio-body li {
+	padding: 22px 4px;
+	border-top: solid 1px #efefef;
+}
+
+#audio-create .audio-body li:last-child {
+	border-bottom: solid 1px #efefef;
+}
+
+#audio-create .audio-body li a {
+	
+}
+
+#audio-create .audio-body li .txt-wrap {
+	width: 225px;
+}
+
+#audio-create .audio-body li .txt-wrap h2 {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+#audio-create .audio-body li .txt-wrap p {
+	font-size: 14px;
+	margin-top: 6px;
+	letter-spacing: -.8px;
+}
+
+#audio-create .audio-body li .txt-wrap p.color-blue {
+	color: #2db8e8;
+}
+
+#audio-create .audio-body li .txt-wrap p.color-purple {
+	color: #8560f7;
+}
+
+#audio-create .audio-body li .list-bg {
+	width: 80px;
+	height: 64px;
+}
+
+#audio-create .audio-body li .list-bg.list-bg-1 {
+	background-color: yellow;
+}
+
+#audio-create .audio-body li .list-bg.list-bg-2 {
+	background-color: purple;
+}
+
+
+
+
+#audio-footer {
+	background-color: #eaecef;
+	padding: 48px 0 164px;
+}
+
+#audio-footer h1 {
+	font-size: 25px;	
+}
+
+#audio-footer h1 a {
+	color: #959595;
+}
+
+#audio-footer .copyright-wrap {
+	margin-top: 37px;
+}
+
+#audio-footer .copyright-wrap p {
+	letter-spacing: -.5px;
+	font-size: 13px;
+	line-height: 19px;
+
+	color: #959595;
+}
+
+#audio-footer .footer-nav {
+	margin-top: 47px;
+}
+
+#audio-footer .footer-nav ul {
+	overflow: hidden;
+}
+
+#audio-footer .footer-nav li {
+	float: left;
+}
+
+#audio-footer .footer-nav li a {
+	font-size: 13px;
+	color: #959595;
+}
+
+#audio-footer .footer-nav li a:after {
+	display: inline-block;
+	content: "";
+	width: 2px;
+	height: 2px;
+	border-radius: 50%;
+	background-color: #959595;
+
+	/*margin: 4px 7px;*/
+
+	vertical-align: top;
+	margin: 9px 7px 0;
+}
+
+#audio-footer .footer-nav li:last-child a:after {
+	content: none;
+}
+
+#audio-footer .footer-copyright-link {
+	display: block;
+	margin-top: 8px;
+	font-size: 12px;
+	color: #959595;
+}
+
+#audio-footer .footer-copyright-link .symbol{
+	
+}
+
+
+
+
+
+
+/* 오디오의 카테고리  */
+#audio-main.audio-sub-main {
+	background-color: #ffffff;	
+}
+
+
+.audio-category {
+	padding-top: 71px;
+}
+
+.audio-category .title-wrap {
+	padding-bottom: 20px;
+	border-bottom: solid 1px #ececec;
+}
+
+.audio-category .title-wrap h2 {
+	font-size: 27px;
+	font-weight: 600;
+	letter-spacing: -1px;
+}
+
+.audio-category .title-wrap p {
+	font-size: 14px;
+	color: #959595;
+	margin-top: 20px;
+}
+
+.audio-category .audio-category-lists {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: stretch;
+	margin-top: 22px;
+}
+
+.audio-category .audio-category-lists .category-list {
+	width: 162px;
+	height: 164px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.audio-category .audio-category-lists .category-list:nth-child(6n) {
+	margin-right: 0;
+}
+
+.audio-category .audio-category-lists .category-list:nth-child(odd) a {
+	/*background-color: yellow;*/
+}
+
+.audio-category .audio-category-lists .category-list:nth-child(even) a {
+	/*background-color: pink;*/
+}
+
+.audio-category .audio-category-lists a {
+	overflow: hidden;
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(230, 125, 127);
+	border-radius: 6px;
+	padding: 14px;
+}
+
+.audio-category .audio-category-lists a h3 {
+	font-size: 19px;
+	line-height: 1.3;
+	color: #ffffff;
+}
+
+.audio-category .audio-category-lists a p {
+	position: absolute;
+	width: 80px;
+	font-size: 13px;
+	color: #fefefe;
+
+	bottom: 14px;
+}
+
+.audio-category .audio-category-lists a .thumbnail{
+	position: absolute;
+	width: 78px;
+	height: 78px;
+
+	right: -13px;
+	bottom: 0;
+
+	transform: rotate(25deg);
+}
+
+
+
+#auido-category-book {
+	padding-bottom: 120px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
